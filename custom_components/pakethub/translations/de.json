@@ -1,0 +1,56 @@
+{
+  "title": "PaketHub",
+  "config": {
+    "step": {
+      "user": {
+        "title": "PaketHub einrichten",
+        "description": "Gib deinen 17TRACK API-Schlüssel ein.",
+        "data": {
+          "api_key": "17TRACK API-Schlüssel"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zur 17TRACK API fehlgeschlagen.",
+      "invalid_auth": "Der API-Schlüssel ist ungültig."
+    },
+    "abort": {
+      "already_configured": "PaketHub ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "PaketHub Optionen",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall in Minuten"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status"
+      },
+      "location": {
+        "name": "Standort"
+      },
+      "latest_event": {
+        "name": "Letztes Ereignis"
+      },
+      "last_update": {
+        "name": "Letztes Update"
+      },
+      "eta": {
+        "name": "Voraussichtliche Zustellung"
+      },
+      "days_in_transit": {
+        "name": "Tage unterwegs"
+      },
+      "carrier": {
+        "name": "Paketdienst"
+      }
+    }
+  }
+}

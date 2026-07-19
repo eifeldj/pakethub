@@ -1,0 +1,44 @@
+add_package:
+  name: Paket hinzufügen
+  description: Registriert eine neue Sendung bei 17TRACK und aktualisiert PaketHub.
+  fields:
+    tracking_number:
+      name: Sendungsnummer
+      description: Die vollständige Tracking- oder Sendungsnummer.
+      required: true
+      example: YT2637821437895478
+      selector:
+        text:
+    package_name:
+      name: Paketname
+      description: Ein frei wählbarer Name für die Sendung.
+      required: true
+      example: Bambulab
+      selector:
+        text:
+
+remove_package:
+  name: Paket entfernen
+  description: Löscht eine Sendung dauerhaft aus dem 17TRACK-Konto.
+  fields:
+    tracking_number:
+      name: Sendungsnummer
+      description: Die Sendungsnummer, die gelöscht werden soll.
+      required: true
+      example: YT2637821437895478
+      selector:
+        text:
+    carrier:
+      name: Paketdienst-Code
+      description: Optionaler numerischer 17TRACK-Paketdienst-Code.
+      required: false
+      example: 100003
+      selector:
+        number:
+          min: 1
+          max: 999999
+          mode: box
+
+refresh:
+  name: Jetzt aktualisieren
+  description: Ruft Paketliste und Trackingdetails sofort erneut von 17TRACK ab.

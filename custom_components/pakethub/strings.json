@@ -1,0 +1,56 @@
+{
+  "title": "PaketHub",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up PaketHub",
+        "description": "Enter your 17TRACK API key.",
+        "data": {
+          "api_key": "17TRACK API key"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the 17TRACK API.",
+      "invalid_auth": "The API key is invalid."
+    },
+    "abort": {
+      "already_configured": "PaketHub is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "PaketHub options",
+        "data": {
+          "scan_interval": "Update interval in minutes"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status"
+      },
+      "location": {
+        "name": "Location"
+      },
+      "latest_event": {
+        "name": "Latest event"
+      },
+      "last_update": {
+        "name": "Last update"
+      },
+      "eta": {
+        "name": "Estimated delivery"
+      },
+      "days_in_transit": {
+        "name": "Days in transit"
+      },
+      "carrier": {
+        "name": "Carrier"
+      }
+    }
+  }
+}
