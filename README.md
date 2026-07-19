@@ -1,30 +1,20 @@
 # PaketHub
 
-PaketHub is a custom Home Assistant integration for parcel tracking. The first provider is the official 17TRACK API v2.4.
+PaketHub is a custom Home Assistant integration for parcel tracking through the official 17TRACK API v2.4.
 
-> **Project status:** Early development release. The integration currently supports one 17TRACK account per Home Assistant instance.
+> **Project status:** Early development release. One 17TRACK account per Home Assistant instance is currently supported.
 
 ## Features
 
-- Setup through the Home Assistant user interface
-- Automatic retrieval of registered 17TRACK shipments
-- A separate Home Assistant device for every shipment
-- Seven sensors per shipment:
-  - status
-  - location
-  - latest event
-  - last update
-  - days in transit
-  - estimated delivery
-  - carrier
+- UI configuration and configurable polling interval
+- One Home Assistant device per shipment
+- Status, location, latest event, last update, ETA, transit days and carrier sensors
 - Full tracking history in the status sensor attributes
-- Configurable update interval
+- Central PaketHub device with package counters, last synchronization, API connectivity and refresh button
+- Dynamic icons for shipment states
 - Home Assistant actions for adding, removing and refreshing shipments
+- Privacy-conscious diagnostics
 - German and English translations
-
-## Requirements
-
-You need a valid API key for the official 17TRACK API v2.4. The API key is not the password for the normal 17TRACK website.
 
 ## Installation with HACS
 
@@ -34,27 +24,13 @@ You need a valid API key for the official 17TRACK API v2.4. The API key is not t
 4. Search for **PaketHub** and install it.
 5. Restart Home Assistant.
 6. Open **Settings → Devices & services → Add integration** and select **PaketHub**.
-7. Enter your 17TRACK API key.
+7. Enter your official 17TRACK API v2.4 key.
 
 ## Manual installation
 
-Copy the directory:
-
-```text
-custom_components/pakethub
-```
-
-to:
-
-```text
-/config/custom_components/pakethub
-```
-
-Restart Home Assistant and add PaketHub from **Settings → Devices & services**.
+Copy `custom_components/pakethub` to `/config/custom_components/pakethub`, restart Home Assistant and add PaketHub through the integrations UI.
 
 ## Actions
-
-### Add a shipment
 
 ```yaml
 action: pakethub.add_package
@@ -63,17 +39,11 @@ data:
   package_name: Bambu Lab
 ```
 
-### Remove a shipment
-
-The carrier code is optional.
-
 ```yaml
 action: pakethub.remove_package
 data:
   tracking_number: YT2637821437895478
 ```
-
-### Refresh immediately
 
 ```yaml
 action: pakethub.refresh
@@ -81,27 +51,12 @@ action: pakethub.refresh
 
 ## Updating from TrackHub
 
-PaketHub uses a new Home Assistant integration domain. Remove the previous `trackhub` integration and directory before installing PaketHub:
+Remove the old `trackhub` integration and `/config/custom_components/trackhub` directory before installing PaketHub. Shipments remain registered in the 17TRACK account and are imported again.
 
-```text
-/config/custom_components/trackhub
-```
+## Support and privacy
 
-After restarting Home Assistant, install and configure PaketHub again. Existing shipments remain registered in your 17TRACK account and will be imported automatically.
-
-## Roadmap
-
-- Central PaketHub device and diagnostic sensors
-- Refresh button entity
-- Improved status icons
-- Tracking timeline improvements
-- Notifications
-- Support for additional parcel-tracking providers
-
-## Support
-
-Please report bugs and feature requests through the GitHub issue tracker. Do not include API keys or private shipment information in issues or logs.
+Report bugs through the GitHub issue tracker. Never include API keys, tracking numbers, addresses or private shipment details in public issues.
 
 ## License
 
-PaketHub is licensed under the MIT License.
+MIT License.

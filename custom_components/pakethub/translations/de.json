@@ -50,6 +50,34 @@
       },
       "carrier": {
         "name": "Paketdienst"
+      },
+      "total_packages": {
+        "name": "Pakete gesamt"
+      },
+      "active_packages": {
+        "name": "Aktive Pakete"
+      },
+      "in_transit_packages": {
+        "name": "Pakete unterwegs"
+      },
+      "delivered_packages": {
+        "name": "Zugestellte Pakete"
+      },
+      "exception_packages": {
+        "name": "Pakete mit Problemen"
+      },
+      "last_sync": {
+        "name": "Letzte Synchronisierung"
+      }
+    },
+    "binary_sensor": {
+      "api_online": {
+        "name": "API-Verbindung"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Aktualisieren"
       }
     }
   }

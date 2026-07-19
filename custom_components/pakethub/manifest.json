@@ -1,12 +1,14 @@
 {
   "domain": "pakethub",
   "name": "PaketHub",
-  "codeowners": ["@eifeldj"],
+  "codeowners": [
+    "@eifeldj"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/eifeldj/pakethub",
   "issue_tracker": "https://github.com/eifeldj/pakethub/issues",
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "requirements": [],
-  "version": "0.4.0"
+  "version": "0.5.0"
 }

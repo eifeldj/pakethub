@@ -1,23 +1,16 @@
 """Data coordinator for PaketHub."""
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 import logging
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed
-from homeassistant.helpers.update_coordinator import (
-    DataUpdateCoordinator,
-    UpdateFailed,
-)
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .api import (
-    PaketHubApi,
-    PaketHubApiError,
-    PaketHubAuthenticationError,
-)
+from .api import PaketHubApi, PaketHubApiError, PaketHubAuthenticationError
 from .const import API_PAGE_SIZE, CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
@@ -26,14 +19,10 @@ _LOGGER = logging.getLogger(__name__)
 class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
     """Fetch all registered shipments and their full tracking details."""
 
-    def __init__(
-        self,
-        hass: HomeAssistant,
-        entry: ConfigEntry,
-        api: PaketHubApi,
-    ) -> None:
+    def __init__(self, hass: HomeAssistant, entry: ConfigEntry, api: PaketHubApi) -> None:
         self.entry = entry
         self.api = api
+        self.last_successful_update: datetime | None = None
         minutes = int(entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
 
         super().__init__(
@@ -80,10 +69,7 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
                         (item for item in batch if item.get("number") == number),
                         {},
                     )
-                    result[number] = {
-                        "summary": summary,
-                        "detail": detail,
-                    }
+                    result[number] = {"summary": summary, "detail": detail}
 
             # Preserve summaries even when detail retrieval rejects one parcel.
             for summary in summaries:
@@ -91,6 +77,7 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
                 if number and number not in result:
                     result[number] = {"summary": summary, "detail": {}}
 
+            self.last_successful_update = datetime.now(UTC)
             return result
 
         except PaketHubAuthenticationError as err:

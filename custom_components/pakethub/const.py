@@ -2,7 +2,6 @@
 from datetime import timedelta
 
 DOMAIN = "pakethub"
-PLATFORMS = ["sensor"]
 
 CONF_API_KEY = "api_key"
 CONF_SCAN_INTERVAL = "scan_interval"
@@ -15,7 +14,6 @@ API_BASE_URL = "https://api.17track.net/track/v2.4"
 API_PAGE_SIZE = 40
 UPDATE_INTERVAL = timedelta(minutes=DEFAULT_SCAN_INTERVAL)
 
-
 SERVICE_ADD_PACKAGE = "add_package"
 SERVICE_REMOVE_PACKAGE = "remove_package"
 SERVICE_REFRESH = "refresh"
@@ -23,3 +21,5 @@ SERVICE_REFRESH = "refresh"
 ATTR_TRACKING_NUMBER = "tracking_number"
 ATTR_PACKAGE_NAME = "package_name"
 ATTR_CARRIER = "carrier"
+
+CENTRAL_DEVICE_IDENTIFIER = "pakethub"

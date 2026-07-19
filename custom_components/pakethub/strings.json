@@ -50,6 +50,34 @@
       },
       "carrier": {
         "name": "Carrier"
+      },
+      "total_packages": {
+        "name": "Total packages"
+      },
+      "active_packages": {
+        "name": "Active packages"
+      },
+      "in_transit_packages": {
+        "name": "Packages in transit"
+      },
+      "delivered_packages": {
+        "name": "Delivered packages"
+      },
+      "exception_packages": {
+        "name": "Packages with problems"
+      },
+      "last_sync": {
+        "name": "Last synchronization"
+      }
+    },
+    "binary_sensor": {
+      "api_online": {
+        "name": "API connection"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Refresh"
       }
     }
   }
