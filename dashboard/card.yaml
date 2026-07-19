@@ -1,0 +1,6 @@
+type: custom:pakethub-card
+title: Meine Pakete
+show_delivered: false
+max_packages: 8
+sort_by: status
+tap_action: url

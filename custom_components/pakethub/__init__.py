@@ -10,6 +10,7 @@ from .api import PaketHubApi
 from .const import CONF_API_KEY, DOMAIN
 from .coordinator import PaketHubCoordinator
 from .services import async_setup_services
+from .frontend import async_register_frontend
 
 PLATFORMS = [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.BUTTON]
 
@@ -17,6 +18,7 @@ PLATFORMS = [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.BUTTON]
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     """Set up domain-level PaketHub service actions."""
     await async_setup_services(hass)
+    await async_register_frontend(hass)
     return True
 
 

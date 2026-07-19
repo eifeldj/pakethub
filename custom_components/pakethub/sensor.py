@@ -340,11 +340,35 @@ class PaketHubStatusSensor(PaketHubShipmentSensor):
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
+        delivery_window = (
+            self.track_info.get("time_metrics", {})
+            .get("estimated_delivery_date", {})
+            or {}
+        )
+        eta_from = _parse_date(delivery_window.get("from"))
+        eta_to = _parse_date(delivery_window.get("to"))
+        eta = eta_from or eta_to
+        today = dt_util.now().date()
+        latest = self.latest_event_data
+        translated = latest.get("description_translation") or {}
         return {
+            "pakethub_card": True,
             "tracking_number": self._tracking_number,
             "package_name": self.package_name,
             "raw_status": self.raw_status,
             "tracking_url": self.tracking_url,
+            "progress": STATUS_PROGRESS.get(self.raw_status, 0),
+            "carrier": self.carrier_name,
+            "location": self.event_location(latest),
+            "latest_event": translated.get("description")
+            or latest.get("description")
+            or self.summary.get("latest_event_info"),
+            "eta": eta.isoformat() if eta else None,
+            "eta_days_remaining": (eta - today).days if eta else None,
+            "eta_is_today": bool(eta and eta == today),
+            "eta_is_tomorrow": bool(eta and eta == today + timedelta(days=1)),
+            "days_in_transit": _record_days_in_transit(self.record),
+            "timeline": self.history,
             "history": self.history,
         }
 

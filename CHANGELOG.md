@@ -1,17 +1,18 @@
 # Changelog
 
+## 0.7.0
+
+- Eigene Lovelace-Karte `custom:pakethub-card`
+- Automatische Erkennung aller PaketHub-Sendungen
+- Fortschrittsbalken, Status, Paketdienst, ETA, Standort und letztes Ereignis
+- Filter für zugestellte Pakete und maximale Anzahl
+- Sortierung nach Status, ETA oder Paketname
+- Visueller Karteneditor
+- Automatische Ressourcenregistrierung im Lovelace-Storage-Modus
+- Manuelle Ressourcenoption für YAML-Dashboards
+
+
 All notable changes to PaketHub are documented in this file.
-
-## 0.6.0
-
-- Added a status-based progress sensor for every shipment
-- Added a dedicated timeline event sensor with normalized event attributes
-- Enhanced ETA attributes with remaining days, today/tomorrow flags and overdue detection
-- Added central counters for deliveries today and parcels out for delivery today
-- Added average transit time and packages registered during the last 24 hours
-- Added direct 17TRACK links to relevant entity attributes
-- Added ready-to-copy Mushroom dashboard examples
-- Extended German and English translations
 
 ## 0.5.0
 
