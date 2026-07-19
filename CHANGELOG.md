@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1
+
+- Frontend-Registrierung auf Version 0.8.1 aktualisiert
+- Automatisch registrierte Lovelace-Ressource verwendet nun `?v=0.8.1`
+- Versionsnummern in Manifest, Frontend-Registrierung und Dashboard-Karte vereinheitlicht
+- Verhindert das Laden der alten Karten-Version aus dem Browser-Cache
+
 ## 0.8.0
 
 - Neuer Smart Header mit Paketübersicht und relativem Synchronisierungszeitpunkt
