@@ -68,6 +68,24 @@
       },
       "last_sync": {
         "name": "Last synchronization"
+      },
+      "progress": {
+        "name": "Progress"
+      },
+      "timeline_events": {
+        "name": "Timeline events"
+      },
+      "out_for_delivery_today": {
+        "name": "Out for delivery today"
+      },
+      "delivered_today": {
+        "name": "Delivered today"
+      },
+      "average_transit_time": {
+        "name": "Average transit time"
+      },
+      "new_packages_24h": {
+        "name": "New packages (24 h)"
       }
     },
     "binary_sensor": {

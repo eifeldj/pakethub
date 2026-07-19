@@ -1,0 +1,50 @@
+# PaketHub 0.6.0 – central overview
+# Requires Mushroom cards: https://github.com/piitaya/lovelace-mushroom
+# Entity IDs can differ if Home Assistant renamed them. Select the actual IDs in your instance.
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: PaketHub
+    subtitle: Deine Pakete. Alle. Im Blick.
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.pakethub_pakete_gesamt
+        name: Pakete gesamt
+        icon: mdi:package-variant-closed
+      - type: custom:mushroom-entity-card
+        entity: sensor.pakethub_aktive_pakete
+        name: Aktive Pakete
+        icon: mdi:package-variant
+      - type: custom:mushroom-entity-card
+        entity: sensor.pakethub_pakete_unterwegs
+        name: Unterwegs
+        icon: mdi:truck-fast-outline
+      - type: custom:mushroom-entity-card
+        entity: sensor.pakethub_heute_in_zustellung
+        name: Heute in Zustellung
+        icon: mdi:truck-delivery-outline
+      - type: custom:mushroom-entity-card
+        entity: sensor.pakethub_heute_zugestellt
+        name: Heute zugestellt
+        icon: mdi:package-check-outline
+      - type: custom:mushroom-entity-card
+        entity: sensor.pakethub_pakete_mit_problemen
+        name: Probleme
+        icon: mdi:alert-circle-outline
+  - type: custom:mushroom-entity-card
+    entity: sensor.pakethub_durchschnittliche_laufzeit
+    name: Durchschnittliche Laufzeit
+    icon: mdi:chart-timeline-variant
+  - type: custom:mushroom-entity-card
+    entity: binary_sensor.pakethub_api_verbindung
+    name: API-Verbindung
+    icon: mdi:cloud-check-outline
+  - type: custom:mushroom-entity-card
+    entity: button.pakethub_aktualisieren
+    name: Jetzt aktualisieren
+    icon: mdi:refresh
+    tap_action:
+      action: toggle

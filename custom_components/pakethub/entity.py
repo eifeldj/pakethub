@@ -1,11 +1,13 @@
 """Shared PaketHub entities and shipment helpers."""
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.util import dt as dt_util
 
 from .const import CENTRAL_DEVICE_IDENTIFIER, DOMAIN
 from .coordinator import PaketHubCoordinator
@@ -22,6 +24,7 @@ class PaketHubEntity(CoordinatorEntity[PaketHubCoordinator]):
 
     @property
     def device_info(self) -> DeviceInfo:
+        """Return information for the central PaketHub device."""
         return DeviceInfo(
             identifiers={(DOMAIN, CENTRAL_DEVICE_IDENTIFIER)},
             name="PaketHub",
@@ -45,10 +48,12 @@ class PaketHubShipmentEntity(CoordinatorEntity[PaketHubCoordinator]):
 
     @property
     def available(self) -> bool:
+        """Return whether this shipment is present in coordinator data."""
         return super().available and self._tracking_number in (self.coordinator.data or {})
 
     @property
     def device_info(self) -> DeviceInfo:
+        """Return information for the shipment device."""
         return DeviceInfo(
             identifiers={(DOMAIN, self._tracking_number)},
             name=self.package_name,
@@ -76,11 +81,7 @@ class PaketHubShipmentEntity(CoordinatorEntity[PaketHubCoordinator]):
 
     @property
     def raw_status(self) -> str:
-        return (
-            self.track_info.get("latest_status", {}).get("status")
-            or self.summary.get("package_status")
-            or "Unknown"
-        )
+        return shipment_raw_status(self.record)
 
     @property
     def package_name(self) -> str:
@@ -92,13 +93,18 @@ class PaketHubShipmentEntity(CoordinatorEntity[PaketHubCoordinator]):
 
     @staticmethod
     def event_location(event: dict[str, Any]) -> str | None:
+        """Build a readable location from an event."""
         explicit = event.get("location")
         if explicit:
             return str(explicit)
         address = event.get("address") or {}
         location = ", ".join(
             str(value)
-            for value in (address.get("city"), address.get("state"), address.get("country"))
+            for value in (
+                address.get("city"),
+                address.get("state"),
+                address.get("country"),
+            )
             if value
         )
         return location or None
@@ -113,17 +119,21 @@ class PaketHubShipmentEntity(CoordinatorEntity[PaketHubCoordinator]):
 
     @property
     def history(self) -> list[dict[str, Any]]:
+        """Return a normalized, newest-first shipment timeline."""
         providers = self.track_info.get("tracking", {}).get("providers", [])
         result: list[dict[str, Any]] = []
         for provider_record in providers:
             provider = provider_record.get("provider") or {}
             provider_name = provider.get("name")
             for event in provider_record.get("events", []):
+                if not isinstance(event, dict):
+                    continue
                 translated = event.get("description_translation") or {}
                 result.append(
                     {
                         "time": event.get("time_iso"),
-                        "description": translated.get("description") or event.get("description"),
+                        "description": translated.get("description")
+                        or event.get("description"),
                         "location": self.event_location(event),
                         "provider": provider_name,
                         "status": event.get("sub_status"),
@@ -131,6 +141,10 @@ class PaketHubShipmentEntity(CoordinatorEntity[PaketHubCoordinator]):
                 )
         result.sort(key=lambda item: item.get("time") or "", reverse=True)
         return result
+
+    @property
+    def tracking_url(self) -> str:
+        return f"https://t.17track.net/de#nums={self._tracking_number}"
 
 
 def shipment_raw_status(record: dict[str, Any]) -> str:
@@ -143,3 +157,22 @@ def shipment_raw_status(record: dict[str, Any]) -> str:
         or summary.get("package_status")
         or "Unknown"
     )
+
+
+def shipment_latest_event(record: dict[str, Any]) -> dict[str, Any]:
+    """Return the latest event dictionary from a coordinator record."""
+    detail = record.get("detail", {}) or {}
+    track_info = detail.get("track_info", {}) or {}
+    return track_info.get("latest_event", {}) or {}
+
+
+def parse_api_datetime(value: Any) -> datetime | None:
+    """Parse a timestamp returned by 17TRACK."""
+    if not isinstance(value, str) or not value:
+        return None
+    parsed = dt_util.parse_datetime(value)
+    if parsed is None:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=dt_util.UTC)
+    return parsed

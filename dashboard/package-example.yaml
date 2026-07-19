@@ -1,0 +1,22 @@
+# PaketHub 0.6.0 – example card for one shipment
+# Replace every example entity with the actual entities of one package.
+type: vertical-stack
+cards:
+  - type: custom:mushroom-template-card
+    primary: "{{ state_attr('sensor.mein_paket_status', 'package_name') }}"
+    secondary: "{{ states('sensor.mein_paket_status') }}"
+    icon: mdi:package-variant-closed
+    multiline_secondary: true
+  - type: gauge
+    entity: sensor.mein_paket_fortschritt
+    name: Fortschritt
+    min: 0
+    max: 100
+    needle: true
+  - type: entities
+    entities:
+      - entity: sensor.mein_paket_paketdienst
+      - entity: sensor.mein_paket_standort
+      - entity: sensor.mein_paket_letztes_ereignis
+      - entity: sensor.mein_paket_voraussichtliche_zustellung
+      - entity: sensor.mein_paket_timeline_ereignisse

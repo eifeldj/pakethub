@@ -9,7 +9,9 @@ PaketHub is a custom Home Assistant integration for parcel tracking through the 
 - UI configuration and configurable polling interval
 - One Home Assistant device per shipment
 - Status, location, latest event, last update, ETA, transit days and carrier sensors
-- Full tracking history in the status sensor attributes
+- Full tracking history in the status and timeline sensor attributes
+- Smart ETA attributes including remaining days and overdue detection
+- Central daily-delivery and average-transit-time statistics
 - Central PaketHub device with package counters, last synchronization, API connectivity and refresh button
 - Dynamic icons for shipment states
 - Home Assistant actions for adding, removing and refreshing shipments
@@ -48,6 +50,10 @@ data:
 ```yaml
 action: pakethub.refresh
 ```
+
+## Dashboard examples
+
+Ready-to-copy Mushroom examples are included in the `dashboard` directory. Because Home Assistant entity IDs depend on language and existing entities, adjust the example IDs to match your installation.
 
 ## Updating from TrackHub
 
