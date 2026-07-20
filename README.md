@@ -3,7 +3,7 @@
 
 > **Created and maintained by Volker Moeltgen**
 
-> **Version 2.1.0:** Delivered shipments are now available through dedicated status filters: All, Active, In transit, Delivered, Problems and Favorites.
+> **Version 2.1.1:** Delivered shipments are now available through dedicated status filters: All, Active, In transit, Delivered, Problems and Favorites.
 
 ## ✨ Highlights
 

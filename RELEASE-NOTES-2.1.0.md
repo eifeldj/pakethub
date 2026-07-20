@@ -1,6 +1,6 @@
-# PaketHub v2.1.0 — Delivered Package Archive
+# PaketHub v2.1.1 — Delivered Package Archive
 
-PaketHub 2.1.0 makes completed shipments accessible through a dedicated delivered-package view.
+PaketHub 2.1.1 makes completed shipments accessible through a dedicated delivered-package view.
 
 ## New
 
