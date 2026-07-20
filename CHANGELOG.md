@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.0
+
+### Improved package-card layout
+- Package names can now wrap across multiple lines instead of being truncated.
+- Tracking suffix and copy control are grouped separately so they no longer squeeze the title.
+- The latest tracking status is displayed in full and is no longer line-clamped.
+- Added a relative timestamp below the latest status.
+- ETA and location now use matching information tiles.
+- Reduced the carrier column width to give shipment details more room.
+- Added container-query based responsive layouts so cards adapt to their actual dashboard column width, not only the browser viewport.
+- Improved narrow-column and mobile layouts while preserving the accessible details dialog.
+
 ## 1.2.0
 
 ### Added

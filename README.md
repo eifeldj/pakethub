@@ -1,5 +1,8 @@
 # PaketHub
 
+
+> **Version 1.3.0:** Package names and latest tracking updates now remain readable in narrow dashboard columns. The card uses container-based responsive layouts.
+
 ## ✨ Highlights
 
 - Dedicated carrier branding panel with recognizable carrier colors
