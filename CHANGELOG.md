@@ -1,3 +1,10 @@
+## 2.3.1
+
+- Added the required `brand/icon.png` asset for HACS.
+- Added a high-resolution `brand/icon@2x.png` asset.
+- Added the PaketHub documentation link to the custom-card registration.
+- Updated frontend and integration version references.
+
 ## 2.3.0
 
 - Interaktive Zusammenfassungsfelder für Aktiv, Unterwegs, Zugestellt und Probleme

@@ -3,7 +3,7 @@
 
 > **Created and maintained by Volker Moeltgen**
 
-> **Version 2.3.0:** The package overview is now interactive: summary tiles filter shipments directly, with advanced sorting by status, delivery date, latest update, name, and carrier.
+> **Version 2.3.1:** Adds the official PaketHub brand icon for HACS and Home Assistant previews. The interactive summary tiles and advanced shipment sorting from 2.3.0 remain unchanged.
 
 ## ✨ Highlights
 

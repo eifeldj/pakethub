@@ -1,4 +1,4 @@
-const CARD_VERSION = "2.3.0";
+const CARD_VERSION = "2.3.1";
 
 const STATUS_META = {
   NotFound: { icon: "mdi:package-variant-remove", label: "Nicht gefunden", cls: "muted", group: "pending" },
@@ -410,5 +410,5 @@ class PaketHubCardEditor extends HTMLElement {
 if(!customElements.get("pakethub-card"))customElements.define("pakethub-card",PaketHubCard);
 if(!customElements.get("pakethub-card-editor"))customElements.define("pakethub-card-editor",PaketHubCardEditor);
 window.customCards=window.customCards||[];
-if(!window.customCards.some(c=>c.type==="pakethub-card"))window.customCards.push({type:"pakethub-card",name:"PaketHub Card",description:"Modern parcel overview with carrier branding, ETA and tracking timeline",preview:true});
+if(!window.customCards.some(c=>c.type==="pakethub-card"))window.customCards.push({type:"pakethub-card",name:"PaketHub Card",description:"Modern parcel overview with carrier branding, ETA and tracking timeline",preview:true,documentationURL:"https://github.com/volkermoeltgen/PaketHub"});
 console.info(`%c PAKETHUB-CARD %c v${CARD_VERSION} `,"color:white;background:#334155;font-weight:700;padding:2px 5px","color:white;background:#0ea5e9;font-weight:700;padding:2px 5px");

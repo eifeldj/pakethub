@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.3.0:** Die Paketübersicht ist jetzt interaktiv: Zusammenfassungsfelder filtern die Sendungen direkt, zusätzlich stehen erweiterte Sortierungen nach Status, Zustelltermin, letztem Update, Name und Paketdienst zur Verfügung.
+> **Version 2.3.1:** Ergänzt das offizielle PaketHub-Markensymbol für HACS und Home-Assistant-Vorschauen. Die interaktiven Zusammenfassungsfelder und erweiterten Sortierungen aus 2.3.0 bleiben unverändert.
 
 ## ✨ Highlights
 
