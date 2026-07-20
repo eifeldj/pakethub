@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.1
+
+- Vollständiges Release-Paket für PaketHub 0.9.1 erstellt
+- Integrations-, Dashboard- und Ressourcen-Version auf 0.9.1 vereinheitlicht
+- Browser-Cache-Buster der automatisch registrierten Lovelace-Ressource auf `?v=0.9.1` aktualisiert
+- Paket-Detailansicht, Tracking-Timeline, Kopierfunktion und 17TRACK-Link aus 0.9.0 unverändert übernommen
+- Branding-Dateien, Dokumentation und Übersetzungen vollständig in das Release-Paket aufgenommen
+- Release-Archiv von temporären Dateien und Python-Caches bereinigt
+
 ## 0.9.0
 
 - Neue native PaketHub-Detailansicht beim Antippen einer Sendung
