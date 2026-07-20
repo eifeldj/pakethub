@@ -1,3 +1,10 @@
+## 2.3.2
+
+- Fixed missing PaketHub icon in Home Assistant and HACS views.
+- Added local integration brand assets under `custom_components/pakethub/brand/`.
+- Added light and dark icon variants in standard and high-resolution sizes.
+- Kept repository-level HACS brand assets for compatibility.
+
 ## 2.3.1
 
 - Added the required `brand/icon.png` asset for HACS.

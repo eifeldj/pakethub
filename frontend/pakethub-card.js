@@ -1,4 +1,4 @@
-const CARD_VERSION = "2.3.1";
+const CARD_VERSION = "2.3.2";
 
 const STATUS_META = {
   NotFound: { icon: "mdi:package-variant-remove", label: "Nicht gefunden", cls: "muted", group: "pending" },

@@ -3,7 +3,7 @@
 
 > **Created and maintained by Volker Moeltgen**
 
-> **Version 2.3.1:** Adds the official PaketHub brand icon for HACS and Home Assistant previews. The interactive summary tiles and advanced shipment sorting from 2.3.0 remain unchanged.
+> **Version 2.3.2:** Fixes PaketHub branding by shipping the icon both at repository level for HACS and inside the integration for Home Assistant's local Brands API. The interactive dashboard and sorting features remain unchanged.
 
 ## ✨ Highlights
 

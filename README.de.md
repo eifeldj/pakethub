@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.3.1:** Ergänzt das offizielle PaketHub-Markensymbol für HACS und Home-Assistant-Vorschauen. Die interaktiven Zusammenfassungsfelder und erweiterten Sortierungen aus 2.3.0 bleiben unverändert.
+> **Version 2.3.2:** Korrigiert das PaketHub-Branding, indem das Symbol sowohl im Repository für HACS als auch innerhalb der Integration für die lokale Brands-API von Home Assistant ausgeliefert wird. Dashboard und Sortierfunktionen bleiben unverändert.
 
 ## ✨ Highlights
 
