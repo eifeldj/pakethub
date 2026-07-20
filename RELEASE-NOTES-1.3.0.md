@@ -1,6 +1,6 @@
-# PaketHub v1.3.1 — Readable Cards & Responsive Details
+# PaketHub v2.0.0 — Readable Cards & Responsive Details
 
-PaketHub 1.3.1 focuses on the real-world readability of shipment cards, especially inside narrow Home Assistant dashboard columns.
+PaketHub 2.0.0 focuses on the real-world readability of shipment cards, especially inside narrow Home Assistant dashboard columns.
 
 ## Highlights
 

@@ -1,4 +1,12 @@
-## 1.3.1
+## 2.0.0
+
+- Added package management directly in the dashboard.
+- Added inline expandable tracking timelines.
+- Added add, rename and delete actions.
+- Added local favorites, search and favorites filtering.
+- Added the `pakethub.rename_package` service and 17TRACK tag update support.
+
+## 2.0.0
 
 ### UI polish
 - Prevent duplicate carrier names when a carrier logo already contains its wordmark.
@@ -10,7 +18,7 @@
 
 # Changelog
 
-## 1.3.1
+## 2.0.0
 
 ### Improved package-card layout
 - Package names can now wrap across multiple lines instead of being truncated.

@@ -17,6 +17,7 @@ UPDATE_INTERVAL = timedelta(minutes=DEFAULT_SCAN_INTERVAL)
 SERVICE_ADD_PACKAGE = "add_package"
 SERVICE_REMOVE_PACKAGE = "remove_package"
 SERVICE_REFRESH = "refresh"
+SERVICE_RENAME_PACKAGE = "rename_package"
 
 ATTR_TRACKING_NUMBER = "tracking_number"
 ATTR_PACKAGE_NAME = "package_name"

@@ -6,7 +6,7 @@ For YAML-mode dashboards, add this resource:
 
 ```yaml
 resources:
-  - url: /pakethub/pakethub-card.js?v=1.3.1
+  - url: /pakethub/pakethub-card.js?v=2.0.0
     type: module
 ```
 

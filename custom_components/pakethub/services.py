@@ -19,6 +19,7 @@ from .const import (
     DOMAIN,
     SERVICE_ADD_PACKAGE,
     SERVICE_REFRESH,
+    SERVICE_RENAME_PACKAGE,
     SERVICE_REMOVE_PACKAGE,
 )
 
@@ -28,6 +29,14 @@ ADD_PACKAGE_SCHEMA = vol.Schema(
     {
         vol.Required(ATTR_TRACKING_NUMBER): cv.string,
         vol.Required(ATTR_PACKAGE_NAME): cv.string,
+    }
+)
+
+RENAME_PACKAGE_SCHEMA = vol.Schema(
+    {
+        vol.Required(ATTR_TRACKING_NUMBER): cv.string,
+        vol.Required(ATTR_PACKAGE_NAME): cv.string,
+        vol.Optional(ATTR_CARRIER): vol.Coerce(int),
     }
 )
 
@@ -122,6 +131,29 @@ async def async_setup_services(hass: HomeAssistant) -> None:
                 f"Die Sendung konnte nicht registriert werden: {err}"
             ) from err
 
+    async def async_rename_package(call: ServiceCall) -> dict[str, Any]:
+        runtime = _get_runtime(hass)
+        api = runtime["api"]
+        coordinator = runtime["coordinator"]
+        tracking_number = call.data[ATTR_TRACKING_NUMBER].strip()
+        package_name = call.data[ATTR_PACKAGE_NAME].strip()
+        carrier = call.data.get(ATTR_CARRIER)
+        if not tracking_number or not package_name:
+            raise ServiceValidationError("Sendungsnummer und Paketname dürfen nicht leer sein.")
+        try:
+            response = await api.async_change_tag(tracking_number, package_name, carrier)
+            accepted = response.get("data", {}).get("accepted", [])
+            rejected = response.get("data", {}).get("rejected", [])
+            if rejected and not accepted:
+                reason = rejected[0].get("error") or rejected[0]
+                raise ServiceValidationError(f"17TRACK hat die Umbenennung abgelehnt: {reason}")
+            await coordinator.async_request_refresh()
+            return {"success": True, "tracking_number": tracking_number, "package_name": package_name}
+        except ServiceValidationError:
+            raise
+        except PaketHubApiError as err:
+            raise HomeAssistantError(f"Die Sendung konnte nicht umbenannt werden: {err}") from err
+
     async def async_remove_package(call: ServiceCall) -> dict[str, Any]:
         runtime = _get_runtime(hass)
         api = runtime["api"]
@@ -173,6 +205,13 @@ async def async_setup_services(hass: HomeAssistant) -> None:
         SERVICE_ADD_PACKAGE,
         async_add_package,
         schema=ADD_PACKAGE_SCHEMA,
+        supports_response=SupportsResponse.OPTIONAL,
+    )
+    hass.services.async_register(
+        DOMAIN,
+        SERVICE_RENAME_PACKAGE,
+        async_rename_package,
+        schema=RENAME_PACKAGE_SCHEMA,
         supports_response=SupportsResponse.OPTIONAL,
     )
     hass.services.async_register(

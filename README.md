@@ -1,7 +1,9 @@
 # PaketHub
 
 
-> **Version 1.3.1:** Package names and latest tracking updates now remain readable in narrow dashboard columns. The card uses container-based responsive layouts.
+> **Created and maintained by Volker Moeltgen**
+
+> **Version 2.0.0:** Package names and latest tracking updates now remain readable in narrow dashboard columns. The card uses container-based responsive layouts.
 
 ## ✨ Highlights
 

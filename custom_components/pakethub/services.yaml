@@ -17,6 +17,29 @@ add_package:
       selector:
         text:
 
+rename_package:
+  name: Paket umbenennen
+  description: Ändert den Anzeigenamen einer bei 17TRACK registrierten Sendung.
+  fields:
+    tracking_number:
+      name: Sendungsnummer
+      required: true
+      selector:
+        text:
+    package_name:
+      name: Neuer Paketname
+      required: true
+      selector:
+        text:
+    carrier:
+      name: Paketdienst-Code
+      required: false
+      selector:
+        number:
+          min: 1
+          max: 999999
+          mode: box
+
 remove_package:
   name: Paket entfernen
   description: Löscht eine Sendung dauerhaft aus dem 17TRACK-Konto.

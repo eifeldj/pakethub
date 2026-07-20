@@ -98,6 +98,18 @@ class PaketHubApi:
             ],
         )
 
+    async def async_change_tag(
+        self,
+        number: str,
+        tag: str,
+        carrier: int | None = None,
+    ) -> dict[str, Any]:
+        """Change the display name/tag of a registered shipment."""
+        item: dict[str, Any] = {"number": number.strip(), "tag": tag.strip()[:100]}
+        if carrier is not None:
+            item["carrier"] = int(carrier)
+        return await self._post("changetag", [item])
+
     async def async_delete(
         self,
         number: str,

@@ -1,4 +1,4 @@
-# PaketHub v1.3.1
+# PaketHub v2.0.0
 
 A focused visual refinement release for the redesigned package cards.
 
