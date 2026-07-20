@@ -1,5 +1,12 @@
 # PaketHub
 
+## ✨ Highlights
+
+- Dedicated carrier branding panel with recognizable carrier colors
+- Spacious responsive package cards with improved right-side padding
+- ETA, location, progress and latest event at a glance
+- Accessible package-detail dialog with keyboard and focus management
+
 ![PaketHub – Parcel Tracking for Home Assistant](images/hacs-banner.png)
 
 PaketHub is a custom Home Assistant integration for parcel tracking through the official 17TRACK API v2.4.

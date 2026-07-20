@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0
+
+### Added
+- New wide package-card layout with a dedicated carrier brand panel.
+- Built-in branded carrier marks and official brand colors for Austrian Post, DHL, UPS, FedEx, GLS, DPD, Amazon Logistics, YunExpress, Hermes/Evri, Royal Mail and USPS.
+- Clear chevron affordance for opening package details.
+
+### Improved
+- More generous right-side spacing and a longer, easier-to-read progress bar.
+- Larger package titles, ETA panels and location information.
+- Responsive layout: carrier panel becomes a compact header on tablets and phones.
+- Refined card borders, gradients, hover states and spacing for current Home Assistant themes.
+- Existing accessible dialog, keyboard navigation and focus handling retained.
+
 ## 1.1.1
 
 - Added carrier-specific visual badges for common parcel services

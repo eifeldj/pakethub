@@ -1,5 +1,12 @@
 # PaketHub
 
+## ✨ Highlights
+
+- Eigener Carrier-Bereich mit gut erkennbaren Paketdienst-Farben
+- Großzügige responsive Paketkarten mit mehr Abstand am rechten Rand
+- ETA, Standort, Fortschritt und letztes Ereignis auf einen Blick
+- Barrierearme Paket-Detailansicht mit Tastatur- und Fokussteuerung
+
 ![PaketHub – Paketverfolgung für Home Assistant](images/hacs-banner.png)
 
 PaketHub ist eine benutzerdefinierte Home-Assistant-Integration zur Paketverfolgung über die offizielle 17TRACK API v2.4.
