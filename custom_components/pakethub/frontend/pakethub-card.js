@@ -1,4 +1,4 @@
-const CARD_VERSION = "2.0.0";
+const CARD_VERSION = "2.0.1";
 
 const STATUS_META = {
   NotFound: { icon: "mdi:package-variant-remove", label: "Nicht gefunden", cls: "muted", group: "pending" },
@@ -333,7 +333,24 @@ class PaketHubCard extends HTMLElement {
       <div class="summary"><div class="summary-item"><span class="summary-value">${summary.active}</span><span class="summary-label">${this._escape(this._t("active"))}</span></div><div class="summary-item"><span class="summary-value">${summary.transit + summary.delivery}</span><span class="summary-label">${this._escape(this._t("packages_transit"))}</span></div><div class="summary-item"><span class="summary-value">${summary.delivered}</span><span class="summary-label">${this._escape(this._t("delivered"))}</span></div><div class="summary-item"><span class="summary-value">${summary.error}</span><span class="summary-label">${this._escape(this._t("problems"))}</span></div></div><div class="toolbar"><div class="search"><ha-icon icon="mdi:magnify"></ha-icon><input type="search" placeholder="${this._escape(this._t("search"))}" value="${this._escape(this._query)}"></div><button class="favorites-filter ${this._favoritesOnly?"active":""}"><ha-icon icon="mdi:star"></ha-icon>${this._escape(this._t("favorites"))}</button></div><div class="last-sync">${this._escape(this._relative(this._lastSync()?.state))}</div></div><div class="content">${body}</div></ha-card>`;
     this.shadowRoot.querySelector(".refresh")?.addEventListener("click", () => this._refresh());
     this.shadowRoot.querySelector(".add-package")?.addEventListener("click", () => this._openManage("add"));
-    const search=this.shadowRoot.querySelector(".search input"); if(search) search.addEventListener("input",e=>{this._query=e.target.value;this._signature="";this._render();});
+    const search=this.shadowRoot.querySelector(".search input");
+    if(search){
+      ["keydown","keypress","keyup"].forEach(type=>search.addEventListener(type,event=>event.stopPropagation()));
+      search.addEventListener("input",event=>{
+        event.stopPropagation();
+        const value=event.target.value;
+        const caret=event.target.selectionStart ?? value.length;
+        this._query=value;
+        this._signature="";
+        this._render();
+        requestAnimationFrame(()=>{
+          const nextSearch=this.shadowRoot.querySelector(".search input");
+          if(!nextSearch)return;
+          nextSearch.focus({preventScroll:true});
+          try{nextSearch.setSelectionRange(caret,caret);}catch(_err){}
+        });
+      });
+    }
     this.shadowRoot.querySelector(".favorites-filter")?.addEventListener("click",()=>{this._favoritesOnly=!this._favoritesOnly;this._signature="";this._render();});
     this.shadowRoot.querySelectorAll(".copy-inline").forEach(el => el.addEventListener("click", async event => {
       event.stopPropagation();

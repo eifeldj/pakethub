@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.0.0:** Paketnamen und der letzte Tracking-Status bleiben nun auch in schmalen Dashboard-Spalten vollständig lesbar. Die Karte passt sich per Container Queries an ihre tatsächliche Breite an.
+> **Version 2.0.1:** Paketnamen und der letzte Tracking-Status bleiben nun auch in schmalen Dashboard-Spalten vollständig lesbar. Die Karte passt sich per Container Queries an ihre tatsächliche Breite an.
 
 ## ✨ Highlights
 
