@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.2.0:** Zugestellte Sendungen sind jetzt über eigene Statusfilter abrufbar: Alle, Aktiv, Unterwegs, Zugestellt, Probleme und Favoriten.
+> **Version 2.3.0:** Die Paketübersicht ist jetzt interaktiv: Zusammenfassungsfelder filtern die Sendungen direkt, zusätzlich stehen erweiterte Sortierungen nach Status, Zustelltermin, letztem Update, Name und Paketdienst zur Verfügung.
 
 ## ✨ Highlights
 

@@ -1,3 +1,13 @@
+## 2.3.0
+
+- Interaktive Zusammenfassungsfelder für Aktiv, Unterwegs, Zugestellt und Probleme
+- Klick auf einen Kennzahlenbereich aktiviert sofort den passenden Statusfilter
+- Erweiterte Sortierung direkt im Dashboard
+- Neue Sortieroptionen: letztes Update und Paketdienst
+- Sortieroptionen auch im visuellen Karteneditor ergänzt
+- Responsive Darstellung der neuen Sortiersteuerung auf Mobilgeräten
+- Versionsnummern und Dokumentation aktualisiert
+
 ## 2.2.0
 
 - Added status filters for All, Active, In transit, Delivered, Problems and Favorites.
