@@ -1,7 +1,7 @@
 # PaketHub
 
 
-> **Version 1.3.0:** Package names and latest tracking updates now remain readable in narrow dashboard columns. The card uses container-based responsive layouts.
+> **Version 1.3.1:** Package names and latest tracking updates now remain readable in narrow dashboard columns. The card uses container-based responsive layouts.
 
 ## ✨ Highlights
 

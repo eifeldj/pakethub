@@ -1,6 +1,16 @@
+## 1.3.1
+
+### UI polish
+- Prevent duplicate carrier names when a carrier logo already contains its wordmark.
+- Improve carrier logo sizing and alignment.
+- Limit package titles to two readable lines across all card widths.
+- Make status badges more compact.
+- Increase progress bar weight and add a subtle status glow.
+- Add a restrained carrier-colour tint to package content areas.
+
 # Changelog
 
-## 1.3.0
+## 1.3.1
 
 ### Improved package-card layout
 - Package names can now wrap across multiple lines instead of being truncated.
