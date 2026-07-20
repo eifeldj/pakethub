@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.0
+
+- Neue native PaketHub-Detailansicht beim Antippen einer Sendung
+- Chronologische Tracking-Timeline mit Datum, Uhrzeit, Status, Standort und Paketdienst
+- Aktuellstes Tracking-Ereignis wird hervorgehoben
+- Trackingnummer kann direkt kopiert werden
+- Direkte Schaltflächen zu 17TRACK und zu den Home-Assistant-Entitätsdetails
+- Neues PaketHub-Branding mit Icon und HACS-Banner
+- Dashboard- und Ressourcen-Version auf 0.9.0 aktualisiert
+
 ## 0.8.1
 
 - Frontend-Registrierung auf Version 0.8.1 aktualisiert

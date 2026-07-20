@@ -13,7 +13,7 @@ _LOGGER = logging.getLogger(__name__)
 
 CARD_URL_BASE = "/pakethub"
 CARD_FILENAME = "pakethub-card.js"
-CARD_VERSION = "0.8.1"
+CARD_VERSION = "0.9.0"
 CARD_URL = f"{CARD_URL_BASE}/{CARD_FILENAME}?v={CARD_VERSION}"
 
 

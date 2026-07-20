@@ -1,5 +1,7 @@
 # PaketHub
 
+![PaketHub – Parcel Tracking for Home Assistant](images/hacs-banner.png)
+
 PaketHub is a custom Home Assistant integration for parcel tracking through the official 17TRACK API v2.4.
 
 > **Project status:** Early development release. One 17TRACK account per Home Assistant instance is currently supported.
@@ -10,6 +12,8 @@ PaketHub is a custom Home Assistant integration for parcel tracking through the 
 - One Home Assistant device per shipment
 - Status, location, latest event, last update, ETA, transit days and carrier sensors
 - Full tracking history in the status sensor attributes
+- Native package detail view with a chronological tracking timeline
+- Copyable tracking number and direct 17TRACK link
 - Central PaketHub device with package counters, last synchronization, API connectivity and refresh button
 - Dynamic icons for shipment states
 - Home Assistant actions for adding, removing and refreshing shipments
@@ -71,7 +75,11 @@ title: Meine Pakete
 show_delivered: false
 max_packages: 8
 sort_by: status
-tap_action: url
+tap_action: details
 ```
 
 Die JavaScript-Ressource wird bei Dashboards im Storage-Modus automatisch registriert. Hinweise für YAML-Dashboards stehen unter `dashboard/README.md`.
+
+### Aktion beim Antippen
+
+`tap_action` unterstützt `details` (PaketHub-Timeline), `url` (17TRACK) und `more-info` (Home-Assistant-Entitätsdetails).
