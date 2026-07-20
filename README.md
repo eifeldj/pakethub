@@ -3,7 +3,7 @@
 
 > **Created and maintained by Volker Moeltgen**
 
-> **Version 2.0.2:** Package names and latest tracking updates now remain readable in narrow dashboard columns. The card uses container-based responsive layouts.
+> **Version 2.1.0:** Delivered shipments are now available through dedicated status filters: All, Active, In transit, Delivered, Problems and Favorites.
 
 ## ✨ Highlights
 

@@ -1,3 +1,10 @@
+## 2.1.0
+
+- Added status filters for All, Active, In transit, Delivered, Problems and Favorites.
+- Delivered packages can now be viewed on demand without cluttering the active overview.
+- Added a delivered package count directly to the archive filter.
+- Improved responsive filter controls for narrow Home Assistant dashboard columns.
+
 ## 2.0.2
 
 - Added package management directly in the dashboard.

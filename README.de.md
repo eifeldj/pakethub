@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.0.2:** Paketnamen und der letzte Tracking-Status bleiben nun auch in schmalen Dashboard-Spalten vollständig lesbar. Die Karte passt sich per Container Queries an ihre tatsächliche Breite an.
+> **Version 2.1.0:** Zugestellte Sendungen sind jetzt über eigene Statusfilter abrufbar: Alle, Aktiv, Unterwegs, Zugestellt, Probleme und Favoriten.
 
 ## ✨ Highlights
 
