@@ -39,23 +39,19 @@ Copy `custom_components/pakethub` to `/config/custom_components/pakethub`, resta
 ```yaml
 action: pakethub.add_package
 data:
-  tracking_number: YT2637821437895478
-  package_name: Bambu Lab
+  tracking_number: EXAMPLE1234567890
+  package_name: Example order
 ```
 
 ```yaml
 action: pakethub.remove_package
 data:
-  tracking_number: YT2637821437895478
+  tracking_number: EXAMPLE1234567890
 ```
 
 ```yaml
 action: pakethub.refresh
 ```
-
-## Updating from TrackHub
-
-Remove the old `trackhub` integration and `/config/custom_components/trackhub` directory before installing PaketHub. Shipments remain registered in the 17TRACK account and are imported again.
 
 ## Support and privacy
 

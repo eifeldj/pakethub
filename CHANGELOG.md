@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0
+## 1.1.1
 
 - Added carrier-specific visual badges for common parcel services
 - Added a prominent ETA block to every package card
@@ -9,7 +9,7 @@
 - Localized the dashboard card automatically for German and English Home Assistant installations
 - Included the package detail dialog, chronological tracking timeline, 17TRACK link and Home Assistant details action
 - Changed the primary project documentation to English and added a separate German README
-- Unified integration, frontend resource and dashboard card versions at 1.1.0
+- Unified integration, frontend resource and dashboard card versions at 1.1.1
 
 ## 0.9.1
 
