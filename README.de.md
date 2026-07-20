@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.1.1:** Zugestellte Sendungen sind jetzt über eigene Statusfilter abrufbar: Alle, Aktiv, Unterwegs, Zugestellt, Probleme und Favoriten.
+> **Version 2.2.0:** Zugestellte Sendungen sind jetzt über eigene Statusfilter abrufbar: Alle, Aktiv, Unterwegs, Zugestellt, Probleme und Favoriten.
 
 ## ✨ Highlights
 

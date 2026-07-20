@@ -1,4 +1,4 @@
-## 2.1.1
+## 2.2.0
 
 - Added status filters for All, Active, In transit, Delivered, Problems and Favorites.
 - Delivered packages can now be viewed on demand without cluttering the active overview.
