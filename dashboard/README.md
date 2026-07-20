@@ -1,33 +1,35 @@
-# PaketHub Dashboard
+# PaketHub dashboard
 
-## Native PaketHub Card (ab 0.7.0)
+## Native PaketHub card
 
-Nach Installation und Neustart wird die Karte im normalen Dashboard-Karteneditor als **PaketHub Card** angeboten.
+After installation and a Home Assistant restart, **PaketHub Card** is available in the visual dashboard card editor.
 
 ```yaml
 type: custom:pakethub-card
-title: Meine Pakete
+title: My Packages
 show_delivered: false
 max_packages: 8
 sort_by: status
-tap_action: url
+tap_action: details
 ```
 
-Optionen:
+## Options
 
-- `title`: Überschrift der Karte
-- `show_delivered`: zugestellte Pakete anzeigen
-- `max_packages`: maximale Anzahl sichtbarer Pakete
-- `sort_by`: `status`, `eta` oder `name`
-- `tap_action`: `url` öffnet 17TRACK, `more-info` öffnet den HA-Dialog
+- `title`: card title
+- `show_delivered`: include delivered shipments
+- `max_packages`: maximum number of visible shipments
+- `sort_by`: `status`, `eta`, or `name`
+- `tap_action`: `details` opens the PaketHub timeline, `url` opens 17TRACK, and `more-info` opens the Home Assistant entity dialog
 
-Bei einem Dashboard im YAML-Modus muss die Ressource einmal manuell registriert werden:
+## YAML-mode dashboards
+
+The resource is registered automatically only for dashboards in storage mode. Add it manually when using YAML mode:
 
 ```yaml
 lovelace:
   resources:
-    - url: /pakethub/pakethub-card.js?v=0.7.0
+    - url: /pakethub/pakethub-card.js?v=1.0.0
       type: module
 ```
 
-Die älteren YAML-Beispiele bleiben zusätzlich verfügbar.
+The additional YAML examples in this directory remain available for custom layouts.
