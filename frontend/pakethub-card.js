@@ -1,4 +1,4 @@
-const CARD_VERSION = "2.0.1";
+const CARD_VERSION = "2.0.2";
 
 const STATUS_META = {
   NotFound: { icon: "mdi:package-variant-remove", label: "Nicht gefunden", cls: "muted", group: "pending" },
@@ -342,13 +342,18 @@ class PaketHubCard extends HTMLElement {
         const caret=event.target.selectionStart ?? value.length;
         this._query=value;
         this._signature="";
-        this._render();
-        requestAnimationFrame(()=>{
-          const nextSearch=this.shadowRoot.querySelector(".search input");
-          if(!nextSearch)return;
-          nextSearch.focus({preventScroll:true});
-          try{nextSearch.setSelectionRange(caret,caret);}catch(_err){}
-        });
+        clearTimeout(this._searchRenderTimer);
+        this._searchRenderTimer=setTimeout(()=>{
+          this._render();
+          const restoreFocus=()=>{
+            const nextSearch=this.shadowRoot.querySelector(".search input");
+            if(!nextSearch)return;
+            nextSearch.focus({preventScroll:true});
+            try{nextSearch.setSelectionRange(Math.min(caret,nextSearch.value.length),Math.min(caret,nextSearch.value.length));}catch(_err){}
+          };
+          requestAnimationFrame(restoreFocus);
+          setTimeout(restoreFocus,0);
+        },0);
       });
     }
     this.shadowRoot.querySelector(".favorites-filter")?.addEventListener("click",()=>{this._favoritesOnly=!this._favoritesOnly;this._signature="";this._render();});

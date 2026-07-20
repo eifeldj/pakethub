@@ -1,6 +1,6 @@
-# PaketHub v2.0.1 — Search Input Fix
+# PaketHub v2.0.2 — Search Input Fix
 
-PaketHub 2.0.1 is a focused maintenance update for the dashboard search field.
+PaketHub 2.0.2 is a focused maintenance update for the dashboard search field.
 
 ## Fixed
 

@@ -1,4 +1,4 @@
-# PaketHub v2.0.1
+# PaketHub v2.0.2
 
 PaketHub 2.0 turns the dashboard into a shipment management interface.
 
