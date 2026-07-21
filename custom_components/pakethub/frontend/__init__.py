@@ -1,6 +1,7 @@
 """Frontend registration for PaketHub."""
 from __future__ import annotations
 
+import json
 import logging
 from pathlib import Path
 from typing import Any
@@ -10,16 +11,24 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.event import async_call_later
 
 _LOGGER = logging.getLogger(__name__)
-
 CARD_URL_BASE = "/pakethub"
 CARD_FILENAME = "pakethub-card.js"
-CARD_VERSION = "2.3.2"
-CARD_URL = f"{CARD_URL_BASE}/{CARD_FILENAME}?v={CARD_VERSION}"
+
+
+def _integration_version() -> str:
+    try:
+        manifest = json.loads(
+            (Path(__file__).parent.parent / "manifest.json").read_text(encoding="utf-8")
+        )
+    except (OSError, ValueError, TypeError):
+        return "unknown"
+    return str(manifest.get("version", "unknown"))
 
 
 async def async_register_frontend(hass: HomeAssistant) -> None:
-    """Expose and, where possible, register the PaketHub card."""
     frontend_path = Path(__file__).parent
+    card_url = f"{CARD_URL_BASE}/{CARD_FILENAME}?v={_integration_version()}"
+
     try:
         await hass.http.async_register_static_paths(
             [StaticPathConfig(CARD_URL_BASE, str(frontend_path), True)]
@@ -36,7 +45,7 @@ async def async_register_frontend(hass: HomeAssistant) -> None:
     if mode != "storage":
         _LOGGER.info(
             "PaketHub card is available at %s; Lovelace YAML mode requires manual resource registration",
-            CARD_URL,
+            card_url,
         )
         return
 
@@ -46,22 +55,27 @@ async def async_register_frontend(hass: HomeAssistant) -> None:
             async_call_later(hass, 5, _try_register)
             return
 
-        existing = None
-        for item in resources.async_items():
-            url = item.get("url", "")
-            if url.split("?", 1)[0] == f"{CARD_URL_BASE}/{CARD_FILENAME}":
-                existing = item
-                break
+        existing = next(
+            (
+                item
+                for item in resources.async_items()
+                if item.get("url", "").split("?", 1)[0]
+                == f"{CARD_URL_BASE}/{CARD_FILENAME}"
+            ),
+            None,
+        )
 
         try:
             if existing is None:
-                await resources.async_create_item({"res_type": "module", "url": CARD_URL})
-                _LOGGER.info("Registered PaketHub dashboard card resource")
-            elif existing.get("url") != CARD_URL:
-                await resources.async_update_item(
-                    existing["id"], {"res_type": "module", "url": CARD_URL}
+                await resources.async_create_item(
+                    {"res_type": "module", "url": card_url}
                 )
-                _LOGGER.info("Updated PaketHub dashboard card resource")
+                _LOGGER.info("Registered PaketHub dashboard card resource %s", card_url)
+            elif existing.get("url") != card_url:
+                await resources.async_update_item(
+                    existing["id"], {"res_type": "module", "url": card_url}
+                )
+                _LOGGER.info("Updated PaketHub dashboard card resource to %s", card_url)
         except (KeyError, TypeError, ValueError) as err:
             _LOGGER.warning("Could not automatically register PaketHub card: %s", err)
 
