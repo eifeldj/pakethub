@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="640" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#061522"/><stop offset=".55" stop-color="#075781"/><stop offset="1" stop-color="#35b8ef"/>
+  </linearGradient>
+  <radialGradient id="glow"><stop stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1280" height="640" rx="34" fill="url(#bg)"/>
+<circle cx="1110" cy="95" r="310" fill="url(#glow)"/>
+<g transform="translate(90 120)">
+  <rect width="180" height="180" rx="45" fill="#fff" fill-opacity=".13"/>
+  <path d="M40 62 90 35l50 27v70l-50 28-50-28Z" fill="none" stroke="#fff" stroke-width="12" stroke-linejoin="round"/>
+  <path d="m40 62 50 29 50-29M90 91v69" fill="none" stroke="#fff" stroke-width="12" stroke-linejoin="round"/>
+</g>
+<text x="320" y="220" font-family="Inter,Arial,sans-serif" font-size="92" font-weight="800" fill="#fff">PaketHub</text>
+<text x="320" y="294" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="500" fill="#dff5ff">Native parcel tracking for Home Assistant</text>
+<g font-family="Inter,Arial,sans-serif" font-size="25" fill="#fff">
+  <text x="320" y="385">✓ Native provider intelligence</text>
+  <text x="320" y="430">✓ Automatic 17TRACK fallback</text>
+  <text x="320" y="475">✓ Dedicated dashboard card</text>
+  <text x="320" y="520">✓ Diagnostics and automation support</text>
+</g>
+<text x="90" y="585" font-family="Inter,Arial,sans-serif" font-size="23" fill="#dff5ff">eifeldj.github.io/pakethub</text>
+</svg>

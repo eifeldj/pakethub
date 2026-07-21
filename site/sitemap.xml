@@ -15,6 +15,13 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/actions-and-automations/"/>
     </url>
     <url>
+        <loc>https://eifeldj.github.io/pakethub/architecture/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/architecture/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/architecture/"/>
+    </url>
+    <url>
         <loc>https://eifeldj.github.io/pakethub/configuration/</loc>
         <lastmod>2026-07-21</lastmod>
         <changefreq>daily</changefreq>
@@ -78,11 +85,32 @@
         <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/quickstart/"/>
     </url>
     <url>
+        <loc>https://eifeldj.github.io/pakethub/reference/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/reference/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/reference/"/>
+    </url>
+    <url>
+        <loc>https://eifeldj.github.io/pakethub/releases/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/releases/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/releases/"/>
+    </url>
+    <url>
         <loc>https://eifeldj.github.io/pakethub/roadmap/</loc>
         <lastmod>2026-07-21</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/roadmap/"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/roadmap/"/>
+    </url>
+    <url>
+        <loc>https://eifeldj.github.io/pakethub/screenshots/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/screenshots/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/screenshots/"/>
     </url>
     <url>
         <loc>https://eifeldj.github.io/pakethub/troubleshooting/</loc>
@@ -104,6 +132,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/actions-and-automations/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/actions-and-automations/"/>
+    </url>
+    <url>
+        <loc>https://eifeldj.github.io/pakethub/de/architecture/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/architecture/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/architecture/"/>
     </url>
     <url>
         <loc>https://eifeldj.github.io/pakethub/de/configuration/</loc>
@@ -169,11 +204,32 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/quickstart/"/>
     </url>
     <url>
+        <loc>https://eifeldj.github.io/pakethub/de/reference/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/reference/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/reference/"/>
+    </url>
+    <url>
+        <loc>https://eifeldj.github.io/pakethub/de/releases/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/releases/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/releases/"/>
+    </url>
+    <url>
         <loc>https://eifeldj.github.io/pakethub/de/roadmap/</loc>
         <lastmod>2026-07-21</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/roadmap/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/roadmap/"/>
+    </url>
+    <url>
+        <loc>https://eifeldj.github.io/pakethub/de/screenshots/</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://eifeldj.github.io/pakethub/de/screenshots/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://eifeldj.github.io/pakethub/screenshots/"/>
     </url>
     <url>
         <loc>https://eifeldj.github.io/pakethub/de/troubleshooting/</loc>

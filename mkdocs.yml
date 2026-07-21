@@ -104,6 +104,9 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/site.js
+
 extra:
   status:
     new: New
@@ -124,12 +127,16 @@ nav:
       - Configuration: configuration.md
   - Features:
       - Overview: features.md
+      - Screenshots: screenshots.md
       - Dashboard card: dashboard-card.md
       - Providers: providers.md
       - Diagnostics: diagnostics.md
       - Actions and automations: actions-and-automations.md
-  - Troubleshooting: troubleshooting.md
+      - Reference: reference.md
   - Project:
+      - Architecture: architecture.md
       - Roadmap: roadmap.md
+      - Releases: releases.md
       - Development: development.md
       - Contributing: contributing.md
+  - Troubleshooting: troubleshooting.md

@@ -76,3 +76,9 @@ flowchart LR
 
 !!! tip "Auf Wachstum ausgelegt"
     Das Provider-Framework ist bewusst erweiterbar, damit weitere Carrier integriert werden können, ohne die Bedienung zu verändern.
+
+## PaketHub auf einen Blick
+
+Das eigens entwickelte Dashboard stellt aktive und zugestellte Sendungen übersichtlich dar.
+
+[![PaketHub dashboard preview](assets/dashboard-preview.svg)](screenshots.md)

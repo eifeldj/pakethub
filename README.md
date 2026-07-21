@@ -1,6 +1,12 @@
 # PaketHub
 
 
+
+[![Documentation](https://img.shields.io/github/actions/workflow/status/eifeldj/pakethub/docs.yml?branch=main&label=documentation)](https://eifeldj.github.io/pakethub/)
+[![GitHub release](https://img.shields.io/github/v/release/eifeldj/pakethub)](https://github.com/eifeldj/pakethub/releases)
+[![License](https://img.shields.io/github/license/eifeldj/pakethub)](LICENSE)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-integration-41BDF5?logo=homeassistant&logoColor=white)](https://www.home-assistant.io/)
+
 > **Created and maintained by Volker Moeltgen**
 
 > **Version 2.5.1 – Foundation Maintenance Release:** Synchronizes all active package, integration and dashboard-card versions, updates the documentation for the provider architecture and prepares a clean HACS release.
@@ -41,6 +47,14 @@ PaketHub is a custom Home Assistant integration for parcel tracking through the 
 The bilingual PaketHub documentation is published at:
 
 **https://eifeldj.github.io/pakethub/**
+
+## Project resources
+
+- [Documentation](https://eifeldj.github.io/pakethub/)
+- [Releases](https://github.com/eifeldj/pakethub/releases)
+- [Roadmap](https://eifeldj.github.io/pakethub/roadmap/)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 
 ## Installation with HACS
 

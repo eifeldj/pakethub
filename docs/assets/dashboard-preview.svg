@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title">
+<title id="title">PaketHub dashboard preview</title>
+<rect width="1200" height="720" rx="28" fill="#0d141c"/>
+<rect x="32" y="28" width="1136" height="70" rx="16" fill="#162432"/>
+<circle cx="72" cy="63" r="15" fill="#35b8ef"/>
+<text x="106" y="72" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">Home Assistant · PaketHub</text>
+<g font-family="Inter,Arial,sans-serif">
+  <rect x="48" y="130" width="1104" height="535" rx="24" fill="#111c27" stroke="#294254"/>
+  <text x="82" y="182" font-size="32" font-weight="750" fill="#fff">My packages</text>
+  <text x="1060" y="180" text-anchor="end" font-size="20" fill="#7dd3fc">3 active</text>
+
+  <g transform="translate(82 220)">
+    <rect width="1036" height="112" rx="18" fill="#192938"/>
+    <circle cx="54" cy="56" r="32" fill="#0878b8"/>
+    <path d="M38 50 54 41l16 9v22L54 81 38 72Z" fill="none" stroke="#fff" stroke-width="4"/>
+    <text x="108" y="43" font-size="23" font-weight="700" fill="#fff">Coffee order</text>
+    <text x="108" y="76" font-size="18" fill="#9fb6c6">UPS · In transit · Vienna</text>
+    <rect x="765" y="43" width="215" height="14" rx="7" fill="#294254"/>
+    <rect x="765" y="43" width="150" height="14" rx="7" fill="#35b8ef"/>
+    <text x="980" y="83" text-anchor="end" font-size="17" fill="#9fb6c6">Expected tomorrow</text>
+  </g>
+
+  <g transform="translate(82 350)">
+    <rect width="1036" height="112" rx="18" fill="#192938"/>
+    <circle cx="54" cy="56" r="32" fill="#075781"/>
+    <path d="M38 50 54 41l16 9v22L54 81 38 72Z" fill="none" stroke="#fff" stroke-width="4"/>
+    <text x="108" y="43" font-size="23" font-weight="700" fill="#fff">Home Assistant hardware</text>
+    <text x="108" y="76" font-size="18" fill="#9fb6c6">17TRACK · Customs cleared</text>
+    <rect x="765" y="43" width="215" height="14" rx="7" fill="#294254"/>
+    <rect x="765" y="43" width="105" height="14" rx="7" fill="#0878b8"/>
+    <text x="980" y="83" text-anchor="end" font-size="17" fill="#9fb6c6">ETA pending</text>
+  </g>
+
+  <g transform="translate(82 480)">
+    <rect width="1036" height="112" rx="18" fill="#192938"/>
+    <circle cx="54" cy="56" r="32" fill="#236b55"/>
+    <path d="m39 57 10 10 21-23" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="108" y="43" font-size="23" font-weight="700" fill="#fff">Printer accessories</text>
+    <text x="108" y="76" font-size="18" fill="#9fb6c6">Delivered · Front door</text>
+    <text x="980" y="62" text-anchor="end" font-size="18" font-weight="700" fill="#7ee2b8">Delivered</text>
+  </g>
+</g>
+</svg>

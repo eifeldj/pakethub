@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title">
+<title id="title">PaketHub architecture</title>
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#35b8ef"/><stop offset="1" stop-color="#075781"/></linearGradient>
+  <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5c7486"/></marker>
+</defs>
+<rect width="1200" height="560" rx="24" fill="#f6fafc"/>
+<g font-family="Inter,Arial,sans-serif">
+  <rect x="65" y="210" width="205" height="110" rx="20" fill="url(#g)"/>
+  <text x="168" y="257" text-anchor="middle" font-size="26" font-weight="700" fill="#fff">Home Assistant</text>
+  <text x="168" y="289" text-anchor="middle" font-size="18" fill="#dff5ff">entities · actions · UI</text>
+
+  <rect x="360" y="210" width="235" height="110" rx="20" fill="#fff" stroke="#0878b8" stroke-width="4"/>
+  <text x="478" y="255" text-anchor="middle" font-size="25" font-weight="700" fill="#0e2233">PaketHub</text>
+  <text x="478" y="288" text-anchor="middle" font-size="18" fill="#466273">Coordinator</text>
+
+  <rect x="690" y="65" width="220" height="105" rx="20" fill="#fff" stroke="#35b8ef" stroke-width="4"/>
+  <text x="800" y="109" text-anchor="middle" font-size="24" font-weight="700" fill="#0e2233">Provider engine</text>
+  <text x="800" y="140" text-anchor="middle" font-size="17" fill="#466273">detection · routing</text>
+
+  <rect x="690" y="225" width="220" height="105" rx="20" fill="#fff" stroke="#0878b8" stroke-width="4"/>
+  <text x="800" y="269" text-anchor="middle" font-size="24" font-weight="700" fill="#0e2233">Native UPS</text>
+  <text x="800" y="300" text-anchor="middle" font-size="17" fill="#466273">carrier tracking</text>
+
+  <rect x="690" y="390" width="220" height="105" rx="20" fill="#fff" stroke="#075781" stroke-width="4"/>
+  <text x="800" y="434" text-anchor="middle" font-size="24" font-weight="700" fill="#0e2233">17TRACK</text>
+  <text x="800" y="465" text-anchor="middle" font-size="17" fill="#466273">registry · fallback</text>
+
+  <rect x="990" y="225" width="165" height="105" rx="20" fill="url(#g)"/>
+  <text x="1072" y="267" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Normalized</text>
+  <text x="1072" y="296" text-anchor="middle" font-size="17" fill="#dff5ff">tracking data</text>
+</g>
+<g fill="none" stroke="#5c7486" stroke-width="4" marker-end="url(#a)">
+  <path d="M270 265h80"/>
+  <path d="M595 265h55V117h25"/>
+  <path d="M800 170v40"/>
+  <path d="M800 330v45"/>
+  <path d="M910 277h65"/>
+  <path d="M910 442h80v-97"/>
+  <path d="M990 277h-65"/>
+</g>
+</svg>

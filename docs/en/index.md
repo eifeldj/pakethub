@@ -76,3 +76,9 @@ flowchart LR
 
 !!! tip "Designed to grow"
     The provider framework is intentionally extensible, so more carrier-specific integrations can be added without changing the user experience.
+
+## See PaketHub at a glance
+
+A purpose-built dashboard keeps active and delivered shipments readable.
+
+[![PaketHub dashboard preview](assets/dashboard-preview.svg)](screenshots.md)

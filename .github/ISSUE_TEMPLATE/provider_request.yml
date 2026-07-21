@@ -1,0 +1,39 @@
+name: Provider request
+description: Request native support for another carrier
+title: "[Provider]: "
+labels:
+  - provider
+  - enhancement
+body:
+  - type: input
+    id: carrier
+    attributes:
+      label: Carrier
+    validations:
+      required: true
+  - type: input
+    id: country
+    attributes:
+      label: Country or region
+    validations:
+      required: true
+  - type: input
+    id: api
+    attributes:
+      label: Official API documentation
+      description: Link to official carrier documentation where possible.
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Benefit of native support
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: The carrier is not already listed in the roadmap.
+          required: true
+        - label: I understand that an official, usable API may be required.
+          required: true
