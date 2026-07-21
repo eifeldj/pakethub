@@ -6,9 +6,11 @@ from typing import Any
 
 import voluptuous as vol
 
-from homeassistant.config_entries import ConfigEntryState
+from homeassistant.config_entries import ConfigEntry, ConfigEntryState
 from homeassistant.core import HomeAssistant, ServiceCall, SupportsResponse
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
+from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers import entity_registry as er
 import homeassistant.helpers.config_validation as cv
 
 from .api import PaketHubApiError
@@ -48,8 +50,10 @@ REMOVE_PACKAGE_SCHEMA = vol.Schema(
 )
 
 
-def _get_runtime(hass: HomeAssistant) -> dict[str, Any]:
-    """Return runtime data for the single configured PaketHub entry."""
+def _get_runtime(
+    hass: HomeAssistant,
+) -> tuple[ConfigEntry, dict[str, Any]]:
+    """Return the loaded PaketHub entry and its runtime data."""
     loaded_entries = [
         entry
         for entry in hass.config_entries.async_entries(DOMAIN)
@@ -63,18 +67,59 @@ def _get_runtime(hass: HomeAssistant) -> dict[str, Any]:
 
     entry = loaded_entries[0]
     runtime = hass.data.get(DOMAIN, {}).get(entry.entry_id)
+
     if not runtime:
         raise ServiceValidationError(
             "Für PaketHub sind keine Laufzeitdaten verfügbar."
         )
-    return runtime
+
+    return entry, runtime
+
+
+def _remove_shipment_from_registries(
+    hass: HomeAssistant,
+    tracking_number: str,
+) -> int:
+    """Remove all entities and the device belonging to a shipment."""
+    entity_registry = er.async_get(hass)
+    device_registry = dr.async_get(hass)
+
+    device = device_registry.async_get_device(
+        identifiers={(DOMAIN, tracking_number)}
+    )
+
+    if device is None:
+        _LOGGER.debug(
+            "No device registry entry found for shipment %s",
+            tracking_number,
+        )
+        return 0
+
+    entity_ids = [
+        entity.entity_id
+        for entity in entity_registry.entities.values()
+        if entity.device_id == device.id
+    ]
+
+    for entity_id in entity_ids:
+        entity_registry.async_remove(entity_id)
+
+    device_registry.async_remove_device(device.id)
+
+    _LOGGER.info(
+        "Removed shipment %s from device registry together with %s entities",
+        tracking_number,
+        len(entity_ids),
+    )
+
+    return len(entity_ids)
 
 
 async def async_setup_services(hass: HomeAssistant) -> None:
     """Register PaketHub service actions once."""
 
     async def async_add_package(call: ServiceCall) -> dict[str, Any]:
-        runtime = _get_runtime(hass)
+        _entry, runtime = _get_runtime(hass)
         api = runtime["api"]
         coordinator = runtime["coordinator"]
 
@@ -132,30 +177,49 @@ async def async_setup_services(hass: HomeAssistant) -> None:
             ) from err
 
     async def async_rename_package(call: ServiceCall) -> dict[str, Any]:
-        runtime = _get_runtime(hass)
+        _entry, runtime = _get_runtime(hass)
         api = runtime["api"]
         coordinator = runtime["coordinator"]
+
         tracking_number = call.data[ATTR_TRACKING_NUMBER].strip()
         package_name = call.data[ATTR_PACKAGE_NAME].strip()
         carrier = call.data.get(ATTR_CARRIER)
+
         if not tracking_number or not package_name:
-            raise ServiceValidationError("Sendungsnummer und Paketname dürfen nicht leer sein.")
+            raise ServiceValidationError(
+                "Sendungsnummer und Paketname dürfen nicht leer sein."
+            )
+
         try:
-            response = await api.async_change_tag(tracking_number, package_name, carrier)
+            response = await api.async_change_tag(
+                tracking_number,
+                package_name,
+                carrier,
+            )
             accepted = response.get("data", {}).get("accepted", [])
             rejected = response.get("data", {}).get("rejected", [])
+
             if rejected and not accepted:
                 reason = rejected[0].get("error") or rejected[0]
-                raise ServiceValidationError(f"17TRACK hat die Umbenennung abgelehnt: {reason}")
+                raise ServiceValidationError(
+                    f"17TRACK hat die Umbenennung abgelehnt: {reason}"
+                )
+
             await coordinator.async_request_refresh()
-            return {"success": True, "tracking_number": tracking_number, "package_name": package_name}
+            return {
+                "success": True,
+                "tracking_number": tracking_number,
+                "package_name": package_name,
+            }
         except ServiceValidationError:
             raise
         except PaketHubApiError as err:
-            raise HomeAssistantError(f"Die Sendung konnte nicht umbenannt werden: {err}") from err
+            raise HomeAssistantError(
+                f"Die Sendung konnte nicht umbenannt werden: {err}"
+            ) from err
 
     async def async_remove_package(call: ServiceCall) -> dict[str, Any]:
-        runtime = _get_runtime(hass)
+        entry, runtime = _get_runtime(hass)
         api = runtime["api"]
         coordinator = runtime["coordinator"]
 
@@ -177,11 +241,22 @@ async def async_setup_services(hass: HomeAssistant) -> None:
                 )
 
             await coordinator.async_request_refresh()
+
+            removed_entities = _remove_shipment_from_registries(
+                hass,
+                tracking_number,
+            )
+
+            # Reload the integration so removed in-memory shipment entities
+            # disappear immediately and cannot recreate registry entries.
+            await hass.config_entries.async_reload(entry.entry_id)
+
             return {
                 "success": True,
                 "tracking_number": tracking_number,
                 "accepted": accepted,
                 "rejected": rejected,
+                "removed_entities": removed_entities,
             }
         except ServiceValidationError:
             raise
@@ -191,7 +266,7 @@ async def async_setup_services(hass: HomeAssistant) -> None:
             ) from err
 
     async def async_refresh(call: ServiceCall) -> dict[str, Any]:
-        runtime = _get_runtime(hass)
+        _entry, runtime = _get_runtime(hass)
         coordinator = runtime["coordinator"]
 
         await coordinator.async_request_refresh()
