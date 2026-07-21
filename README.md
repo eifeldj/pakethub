@@ -3,7 +3,7 @@
 
 > **Created and maintained by Volker Moeltgen**
 
-> **Version 2.3.2:** Fixes PaketHub branding by shipping the icon both at repository level for HACS and inside the integration for Home Assistant's local Brands API. The interactive dashboard and sorting features remain unchanged.
+> **Version 2.5.1 – Foundation Maintenance Release:** Synchronizes all active package, integration and dashboard-card versions, updates the documentation for the provider architecture and prepares a clean HACS release.
 
 ## ✨ Highlights
 
@@ -29,7 +29,11 @@ PaketHub is a custom Home Assistant integration for parcel tracking through the 
 - Central PaketHub device with package counters, last synchronization, API connectivity and refresh button
 - Dynamic icons for shipment states
 - Home Assistant actions for adding, removing and refreshing shipments
+- Native UPS tracking with automatic fallback to 17TRACK
+- Extensible provider architecture for future native carriers
+- Provider selection, fallback and API performance diagnostics
 - Privacy-conscious diagnostics
+- Synchronized integration and dashboard-card versioning
 - German and English translations
 
 ## Installation with HACS

@@ -3,7 +3,7 @@
 
 > **Erstellt und gepflegt von Volker Moeltgen**
 
-> **Version 2.3.2:** Korrigiert das PaketHub-Branding, indem das Symbol sowohl im Repository für HACS als auch innerhalb der Integration für die lokale Brands-API von Home Assistant ausgeliefert wird. Dashboard und Sortierfunktionen bleiben unverändert.
+> **Version 2.5.1 – Foundation Maintenance Release:** Synchronisiert alle aktiven Paket-, Integrations- und Dashboard-Karten-Versionen, aktualisiert die Dokumentation der Provider-Architektur und bereitet ein sauberes HACS-Release vor.
 
 ## ✨ Highlights
 
@@ -27,6 +27,10 @@ PaketHub ist eine benutzerdefinierte Home-Assistant-Integration zur Paketverfolg
 - Paketdienst-Badges, Statusfarben, Fortschrittsbalken und hervorgehobene ETA
 - Trackingnummer direkt auf der Karte oder in der Detailansicht kopieren
 - Direkter Link zu 17TRACK und zu den Home-Assistant-Entitätsdetails
+- Natives UPS-Tracking mit automatischem Fallback auf 17TRACK
+- Erweiterbare Provider-Architektur für künftige native Paketdienste
+- Diagnosen für Provider-Auswahl, Fallbacks und API-Laufzeiten
+- Synchronisierte Versionsanzeige von Integration und Dashboard-Karte
 - Deutsche und englische Übersetzungen
 
 ## Installation über HACS

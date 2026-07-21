@@ -49,6 +49,20 @@
 
 # Changelog
 
+
+## 2.5.1
+
+### Changed
+
+- Synchronized all active PaketHub version references to 2.5.1
+- Updated English and German release descriptions
+- Kept historical release notes and changelog entries unchanged
+- Prepared a clean HACS and GitHub maintenance release
+
+### Fixed
+
+- Removed stale 2.3.2 references from active manifests and dashboard-card files
+
 ## 2.0.2
 
 ### Improved package-card layout
