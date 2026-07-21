@@ -6,10 +6,15 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .api import PaketHubApi
-from .const import CONF_API_KEY, DOMAIN
+from .const import (
+    CONF_API_KEY,
+    CONF_UPS_CLIENT_ID,
+    CONF_UPS_CLIENT_SECRET,
+    DOMAIN,
+)
 from .coordinator import PaketHubCoordinator
 from .frontend import async_register_frontend
+from .providers import ProviderManager, SeventeenTrackProvider, UpsProvider
 from .registry import async_cleanup_orphaned_shipments
 from .services import async_setup_services
 
@@ -26,13 +31,23 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up PaketHub from a config entry."""
     session = async_get_clientsession(hass)
-    api = PaketHubApi(session, entry.data[CONF_API_KEY])
-    coordinator = PaketHubCoordinator(hass, entry, api)
+    seventeen_track = SeventeenTrackProvider(session, entry.data[CONF_API_KEY])
+    provider_manager = ProviderManager([seventeen_track])
+
+    ups_client_id = str(entry.options.get(CONF_UPS_CLIENT_ID, "")).strip()
+    ups_client_secret = str(entry.options.get(CONF_UPS_CLIENT_SECRET, "")).strip()
+    if ups_client_id and ups_client_secret:
+        provider_manager.add(
+            UpsProvider(session, ups_client_id, ups_client_secret)
+        )
+
+    coordinator = PaketHubCoordinator(hass, entry, provider_manager)
 
     await coordinator.async_config_entry_first_refresh()
 
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = {
-        "api": api,
+        "api": seventeen_track,
+        "provider_manager": provider_manager,
         "coordinator": coordinator,
     }
 
