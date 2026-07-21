@@ -31,7 +31,7 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
     ) -> None:
         self.entry = entry
         self.provider_manager = provider_manager
-        self.provider = provider_manager.get("17track")
+        self.default_provider = provider_manager.get("17track")
         self.last_successful_update: datetime | None = None
         minutes = int(entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
 
@@ -45,46 +45,9 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
 
     async def _async_update_data(self) -> dict[str, dict[str, Any]]:
         try:
-            summaries: list[dict[str, Any]] = []
-            page_no = 1
-
-            while True:
-                response = await self.provider.async_get_track_list(page_no)
-                page = response.get("page", {})
-                accepted = response.get("data", {}).get("accepted", [])
-                summaries.extend(item for item in accepted if isinstance(item, dict))
-
-                if not page.get("has_next"):
-                    break
-
-                page_no += 1
-                if page_no > 100:
-                    _LOGGER.warning("Stopped after 100 pages to avoid an endless loop")
-                    break
-
-            result: dict[str, dict[str, Any]] = {}
-
-            for start in range(0, len(summaries), API_PAGE_SIZE):
-                batch = summaries[start : start + API_PAGE_SIZE]
-                details_response = await self.provider.async_get_track_info(batch)
-                details = details_response.get("data", {}).get("accepted", [])
-
-                for detail in details:
-                    if not isinstance(detail, dict):
-                        continue
-                    number = detail.get("number")
-                    if not number:
-                        continue
-                    summary = next(
-                        (item for item in batch if item.get("number") == number),
-                        {},
-                    )
-                    result[number] = {"summary": summary, "detail": detail}
-
-            for summary in summaries:
-                number = summary.get("number")
-                if number and number not in result:
-                    result[number] = {"summary": summary, "detail": {}}
+            summaries = await self._async_load_registered_shipments()
+            result = await self._async_load_tracking_details(summaries)
+            self._add_shipments_without_details(result, summaries)
 
             self.last_successful_update = datetime.now(UTC)
             return result
@@ -93,5 +56,77 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
             raise ConfigEntryAuthFailed from err
         except PaketHubProviderError as err:
             raise UpdateFailed(
-                f"{self.provider.provider_name} API error: {err}"
+                f"{self.default_provider.provider_name} API error: {err}"
             ) from err
+
+    async def _async_load_registered_shipments(self) -> list[dict[str, Any]]:
+        """Load all shipment summaries from the registry provider."""
+        summaries: list[dict[str, Any]] = []
+        page_no = 1
+
+        while True:
+            response = await self.default_provider.async_get_track_list(page_no)
+            page = response.get("page", {})
+            accepted = response.get("data", {}).get("accepted", [])
+            summaries.extend(item for item in accepted if isinstance(item, dict))
+
+            if not page.get("has_next"):
+                break
+
+            page_no += 1
+            if page_no > 100:
+                _LOGGER.warning("Stopped after 100 pages to avoid an endless loop")
+                break
+
+        return summaries
+
+    async def _async_load_tracking_details(
+        self,
+        summaries: list[dict[str, Any]],
+    ) -> dict[str, dict[str, Any]]:
+        """Load and combine tracking details for registered shipments."""
+        result: dict[str, dict[str, Any]] = {}
+        summaries_by_number = self._index_summaries_by_number(summaries)
+
+        for start in range(0, len(summaries), API_PAGE_SIZE):
+            batch = summaries[start : start + API_PAGE_SIZE]
+            details_response = await self.default_provider.async_get_track_info(batch)
+            details = details_response.get("data", {}).get("accepted", [])
+
+            for detail in details:
+                if not isinstance(detail, dict):
+                    continue
+
+                number = detail.get("number")
+                if not number:
+                    continue
+
+                result[number] = {
+                    "summary": summaries_by_number.get(number, {}),
+                    "detail": detail,
+                }
+
+        return result
+
+    @staticmethod
+    def _index_summaries_by_number(
+        summaries: list[dict[str, Any]],
+    ) -> dict[str, dict[str, Any]]:
+        """Index the first summary for each tracking number."""
+        indexed: dict[str, dict[str, Any]] = {}
+        for summary in summaries:
+            number = summary.get("number")
+            if number:
+                indexed.setdefault(number, summary)
+        return indexed
+
+    @staticmethod
+    def _add_shipments_without_details(
+        result: dict[str, dict[str, Any]],
+        summaries: list[dict[str, Any]],
+    ) -> None:
+        """Keep registered shipments even when no detail response was returned."""
+        for summary in summaries:
+            number = summary.get("number")
+            if number and number not in result:
+                result[number] = {"summary": summary, "detail": {}}
