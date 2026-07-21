@@ -1,17 +1,17 @@
 # Troubleshooting
 
-## Integration not visible
+## Integration is not visible
 
 Confirm that `custom_components/pakethub` exists and restart Home Assistant.
 
-## Old dashboard-card version
+## Dashboard card is outdated
 
 Reload the browser without cache.
 
-## Native provider failure
+## Native provider fails
 
-PaketHub should fall back to 17TRACK. Check provider-selection and fallback logs.
+PaketHub should automatically fall back to 17TRACK. Check provider-selection and fallback logs.
 
-## No shipment updates
+## Shipments do not update
 
 Check the API key, network access, polling interval, rate-limit messages, diagnostics and logs.
