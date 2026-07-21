@@ -23,9 +23,17 @@
       "init": {
         "title": "PaketHub Optionen",
         "data": {
-          "scan_interval": "Aktualisierungsintervall in Minuten"
-        }
+          "scan_interval": "Aktualisierungsintervall in Minuten",
+          "ups_client_id": "UPS Client-ID",
+          "ups_client_secret": "UPS Client-Secret"
+        },
+        "description": "Optional kannst du direkte UPS-Abfragen aktivieren. Ohne UPS-Zugangsdaten verwendet PaketHub weiterhin 17TRACK."
       }
+    },
+    "error": {
+      "ups_credentials_incomplete": "Bitte entweder beide UPS-Zugangsdaten eingeben oder beide Felder leer lassen.",
+      "ups_invalid_auth": "Die UPS Client-ID oder das UPS Client-Secret ist ungültig.",
+      "ups_cannot_connect": "Verbindung zur UPS API fehlgeschlagen."
     }
   },
   "entity": {

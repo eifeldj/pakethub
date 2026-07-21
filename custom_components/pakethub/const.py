@@ -5,6 +5,8 @@ DOMAIN = "pakethub"
 
 CONF_API_KEY = "api_key"
 CONF_SCAN_INTERVAL = "scan_interval"
+CONF_UPS_CLIENT_ID = "ups_client_id"
+CONF_UPS_CLIENT_SECRET = "ups_client_secret"
 
 DEFAULT_SCAN_INTERVAL = 10
 MIN_SCAN_INTERVAL = 5

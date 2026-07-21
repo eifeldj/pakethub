@@ -84,10 +84,57 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
         self,
         summaries: list[dict[str, Any]],
     ) -> dict[str, dict[str, Any]]:
-        """Load and combine tracking details for registered shipments."""
+        """Load details through native providers with a 17TRACK fallback."""
         result: dict[str, dict[str, Any]] = {}
         summaries_by_number = self._index_summaries_by_number(summaries)
+        fallback_summaries: list[dict[str, Any]] = []
 
+        for summary in summaries:
+            number = summary.get("number")
+            if not number:
+                continue
+
+            provider = self.provider_manager.resolve_tracking_provider(str(number))
+            if provider is None or provider is self.default_provider:
+                fallback_summaries.append(summary)
+                continue
+
+            try:
+                response = await provider.async_get_track_info([summary])
+                accepted = response.get("data", {}).get("accepted", [])
+                detail = accepted[0] if accepted else None
+                if not isinstance(detail, dict):
+                    raise PaketHubProviderError(
+                        f"{provider.provider_name} returned no tracking details"
+                    )
+            except PaketHubProviderError as err:
+                _LOGGER.warning(
+                    "%s tracking failed for %s; falling back to %s: %s",
+                    provider.provider_name,
+                    number,
+                    self.default_provider.provider_name,
+                    err,
+                )
+                fallback_summaries.append(summary)
+                continue
+
+            result[str(number)] = {
+                "summary": summary,
+                "detail": detail,
+            }
+
+        await self._async_load_default_provider_details(
+            fallback_summaries, summaries_by_number, result
+        )
+        return result
+
+    async def _async_load_default_provider_details(
+        self,
+        summaries: list[dict[str, Any]],
+        summaries_by_number: dict[str, dict[str, Any]],
+        result: dict[str, dict[str, Any]],
+    ) -> None:
+        """Load detail batches from the default registry provider."""
         for start in range(0, len(summaries), API_PAGE_SIZE):
             batch = summaries[start : start + API_PAGE_SIZE]
             details_response = await self.default_provider.async_get_track_info(batch)
@@ -101,12 +148,10 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
                 if not number:
                     continue
 
-                result[number] = {
-                    "summary": summaries_by_number.get(number, {}),
+                result[str(number)] = {
+                    "summary": summaries_by_number.get(str(number), {}),
                     "detail": detail,
                 }
-
-        return result
 
     @staticmethod
     def _index_summaries_by_number(

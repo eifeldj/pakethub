@@ -23,9 +23,17 @@
       "init": {
         "title": "PaketHub options",
         "data": {
-          "scan_interval": "Update interval in minutes"
-        }
+          "scan_interval": "Update interval in minutes",
+          "ups_client_id": "UPS client ID",
+          "ups_client_secret": "UPS client secret"
+        },
+        "description": "You can optionally enable direct UPS tracking. Without UPS credentials, PaketHub continues to use 17TRACK."
       }
+    },
+    "error": {
+      "ups_credentials_incomplete": "Enter both UPS credentials or leave both fields empty.",
+      "ups_invalid_auth": "The UPS client ID or client secret is invalid.",
+      "ups_cannot_connect": "Could not connect to the UPS API."
     }
   },
   "entity": {
