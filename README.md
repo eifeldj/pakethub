@@ -36,6 +36,19 @@ PaketHub is a custom Home Assistant integration for parcel tracking through the 
 - Synchronized integration and dashboard-card versioning
 - German and English translations
 
+## Documentation
+
+Detailed documentation is available in the [`docs/`](docs/README.md) directory:
+
+- [Installation](docs/installation.md)
+- [Configuration](docs/configuration.md)
+- [Dashboard card](docs/dashboard-card.md)
+- [Providers](docs/providers.md)
+- [Diagnostics](docs/diagnostics.md)
+- [Actions and automations](docs/actions-and-automations.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Development](docs/development.md)
+
 ## Installation with HACS
 
 1. Open **HACS** in Home Assistant.
