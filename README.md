@@ -38,8 +38,6 @@ PaketHub is a custom Home Assistant integration for parcel tracking through the 
 
 ## Documentation
 
-## Documentation website
-
 The bilingual PaketHub documentation is published at:
 
 **https://eifeldj.github.io/pakethub/**
