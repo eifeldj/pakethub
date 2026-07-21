@@ -10,8 +10,12 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .api import PaketHubApi, PaketHubApiError, PaketHubAuthenticationError
 from .const import API_PAGE_SIZE, CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL, DOMAIN
+from .providers import (
+    PaketHubProviderAuthenticationError,
+    PaketHubProviderError,
+    ProviderManager,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -19,9 +23,15 @@ _LOGGER = logging.getLogger(__name__)
 class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
     """Fetch all registered shipments and their full tracking details."""
 
-    def __init__(self, hass: HomeAssistant, entry: ConfigEntry, api: PaketHubApi) -> None:
+    def __init__(
+        self,
+        hass: HomeAssistant,
+        entry: ConfigEntry,
+        provider_manager: ProviderManager,
+    ) -> None:
         self.entry = entry
-        self.api = api
+        self.provider_manager = provider_manager
+        self.provider = provider_manager.get("17track")
         self.last_successful_update: datetime | None = None
         minutes = int(entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL))
 
@@ -39,7 +49,7 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
             page_no = 1
 
             while True:
-                response = await self.api.async_get_track_list(page_no)
+                response = await self.provider.async_get_track_list(page_no)
                 page = response.get("page", {})
                 accepted = response.get("data", {}).get("accepted", [])
                 summaries.extend(item for item in accepted if isinstance(item, dict))
@@ -56,7 +66,7 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
 
             for start in range(0, len(summaries), API_PAGE_SIZE):
                 batch = summaries[start : start + API_PAGE_SIZE]
-                details_response = await self.api.async_get_track_info(batch)
+                details_response = await self.provider.async_get_track_info(batch)
                 details = details_response.get("data", {}).get("accepted", [])
 
                 for detail in details:
@@ -71,7 +81,6 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
                     )
                     result[number] = {"summary": summary, "detail": detail}
 
-            # Preserve summaries even when detail retrieval rejects one parcel.
             for summary in summaries:
                 number = summary.get("number")
                 if number and number not in result:
@@ -80,7 +89,9 @@ class PaketHubCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
             self.last_successful_update = datetime.now(UTC)
             return result
 
-        except PaketHubAuthenticationError as err:
+        except PaketHubProviderAuthenticationError as err:
             raise ConfigEntryAuthFailed from err
-        except PaketHubApiError as err:
-            raise UpdateFailed(f"17TRACK API error: {err}") from err
+        except PaketHubProviderError as err:
+            raise UpdateFailed(
+                f"{self.provider.provider_name} API error: {err}"
+            ) from err
