@@ -1,6 +1,7 @@
 """Service actions for PaketHub."""
 from __future__ import annotations
 
+import asyncio
 import logging
 from typing import Any
 
@@ -9,8 +10,6 @@ import voluptuous as vol
 from homeassistant.config_entries import ConfigEntry, ConfigEntryState
 from homeassistant.core import HomeAssistant, ServiceCall, SupportsResponse
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
-from homeassistant.helpers import device_registry as dr
-from homeassistant.helpers import entity_registry as er
 import homeassistant.helpers.config_validation as cv
 
 from .api import PaketHubApiError
@@ -24,6 +23,7 @@ from .const import (
     SERVICE_RENAME_PACKAGE,
     SERVICE_REMOVE_PACKAGE,
 )
+from .registry import async_cleanup_orphaned_shipments
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -76,45 +76,6 @@ def _get_runtime(
     return entry, runtime
 
 
-def _remove_shipment_from_registries(
-    hass: HomeAssistant,
-    tracking_number: str,
-) -> int:
-    """Remove all entities and the device belonging to a shipment."""
-    entity_registry = er.async_get(hass)
-    device_registry = dr.async_get(hass)
-
-    device = device_registry.async_get_device(
-        identifiers={(DOMAIN, tracking_number)}
-    )
-
-    if device is None:
-        _LOGGER.debug(
-            "No device registry entry found for shipment %s",
-            tracking_number,
-        )
-        return 0
-
-    entity_ids = [
-        entity.entity_id
-        for entity in entity_registry.entities.values()
-        if entity.device_id == device.id
-    ]
-
-    for entity_id in entity_ids:
-        entity_registry.async_remove(entity_id)
-
-    device_registry.async_remove_device(device.id)
-
-    _LOGGER.info(
-        "Removed shipment %s from device registry together with %s entities",
-        tracking_number,
-        len(entity_ids),
-    )
-
-    return len(entity_ids)
-
-
 async def async_setup_services(hass: HomeAssistant) -> None:
     """Register PaketHub service actions once."""
 
@@ -145,7 +106,6 @@ async def async_setup_services(hass: HomeAssistant) -> None:
                     else None
                 )
 
-                # 17TRACK code -18019901 means the shipment already exists.
                 if error_code == -18019901:
                     await coordinator.async_request_refresh()
                     return {
@@ -242,14 +202,15 @@ async def async_setup_services(hass: HomeAssistant) -> None:
 
             await coordinator.async_request_refresh()
 
-            removed_entities = _remove_shipment_from_registries(
-                hass,
-                tracking_number,
-            )
+            # Allow shipment entities to process the coordinator update and
+            # remove themselves without reloading the complete integration.
+            await asyncio.sleep(0)
 
-            # Reload the integration so removed in-memory shipment entities
-            # disappear immediately and cannot recreate registry entries.
-            await hass.config_entries.async_reload(entry.entry_id)
+            removed_entities, removed_devices = async_cleanup_orphaned_shipments(
+                hass,
+                entry,
+                set(coordinator.data or {}),
+            )
 
             return {
                 "success": True,
@@ -257,6 +218,7 @@ async def async_setup_services(hass: HomeAssistant) -> None:
                 "accepted": accepted,
                 "rejected": rejected,
                 "removed_entities": removed_entities,
+                "removed_devices": removed_devices,
             }
         except ServiceValidationError:
             raise
@@ -266,13 +228,20 @@ async def async_setup_services(hass: HomeAssistant) -> None:
             ) from err
 
     async def async_refresh(call: ServiceCall) -> dict[str, Any]:
-        _entry, runtime = _get_runtime(hass)
+        entry, runtime = _get_runtime(hass)
         coordinator = runtime["coordinator"]
 
         await coordinator.async_request_refresh()
+        removed_entities, removed_devices = async_cleanup_orphaned_shipments(
+            hass,
+            entry,
+            set(coordinator.data or {}),
+        )
         return {
             "success": coordinator.last_update_success,
             "shipments": len(coordinator.data or {}),
+            "removed_entities": removed_entities,
+            "removed_devices": removed_devices,
         }
 
     hass.services.async_register(

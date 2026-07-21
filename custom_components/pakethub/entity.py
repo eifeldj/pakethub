@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
@@ -45,6 +46,19 @@ class PaketHubShipmentEntity(CoordinatorEntity[PaketHubCoordinator]):
         super().__init__(coordinator)
         self._entry = entry
         self._tracking_number = tracking_number
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        """Remove the entity when its shipment no longer exists."""
+        if self._tracking_number not in (self.coordinator.data or {}):
+            if self.hass is not None:
+                self.hass.async_create_task(
+                    self.async_remove(force_remove=True),
+                    f"Remove deleted PaketHub shipment entity {self.entity_id}",
+                )
+            return
+
+        super()._handle_coordinator_update()
 
     @property
     def available(self) -> bool:

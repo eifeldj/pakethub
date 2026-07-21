@@ -1,0 +1,5 @@
+feat: dynamically remove deleted shipments
+
+- remove shipment entities without reloading the integration
+- automatically clean up orphaned shipment devices and entities
+- bump integration version to 2.3.4
