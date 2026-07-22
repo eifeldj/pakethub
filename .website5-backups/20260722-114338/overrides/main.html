@@ -1,0 +1,38 @@
+
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% set ph_page = page if page is defined else none %}
+  {% set ph_title = ph_page.title if ph_page and ph_page.title else config.site_name %}
+  {% set ph_description = config.site_description %}
+  {% if ph_page and ph_page.meta and ph_page.meta.description %}
+    {% set ph_description = ph_page.meta.description %}
+  {% endif %}
+  {% set ph_url = ph_page.canonical_url if ph_page and ph_page.canonical_url else config.site_url %}
+
+  <meta name="theme-color" content="#0878b8">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PaketHub">
+  <meta property="og:title" content="{{ ph_title }} · PaketHub">
+  <meta property="og:description" content="{{ ph_description }}">
+  <meta property="og:url" content="{{ ph_url }}">
+  <meta property="og:image" content="{{ config.site_url }}assets/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ph_title }} · PaketHub">
+  <meta name="twitter:description" content="{{ ph_description }}">
+  <meta name="twitter:image" content="{{ config.site_url }}assets/social-preview.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block announce %}
+  <a class="ph4-announcement" href="https://github.com/eifeldj/pakethub/releases">
+    <span class="ph4-pulse"></span>
+    <strong id="ph4-release-label">Latest PaketHub release</strong>
+    <span>Release notes →</span>
+  </a>
+{% endblock %}

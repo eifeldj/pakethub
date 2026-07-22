@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="de" class="no-js">
   <head>
@@ -6,7 +7,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="PaketHub ist eine moderne Paketverfolgungs-Integration für Home Assistant.">
+        <meta name="description" content="PaketHub bringt intelligente Paketverfolgung in Home Assistant.">
       
       
         <meta name="author" content="Volker Moeltgen">
@@ -57,7 +58,15 @@
       
     
     
+      <link rel="stylesheet" href="../stylesheets/website4.css">
+    
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/website5.css">
+    
+      <link rel="stylesheet" href="../stylesheets/website6.css">
+    
+      <link rel="stylesheet" href="../stylesheets/website7.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,6 +74,32 @@
 
     
     
+  
+  
+  
+  
+  
+    
+  
+  
+
+  <meta name="theme-color" content="#071923">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PaketHub">
+  <meta property="og:title" content="Startseite · PaketHub">
+  <meta property="og:description" content="PaketHub bringt intelligente Paketverfolgung in Home Assistant.">
+  <meta property="og:url" content="https://eifeldj.github.io/pakethub/de/">
+  <meta property="og:image" content="https://eifeldj.github.io/pakethub/assets/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Startseite · PaketHub">
+  <meta name="twitter:description" content="PaketHub bringt intelligente Paketverfolgung in Home Assistant.">
+  <meta name="twitter:image" content="https://eifeldj.github.io/pakethub/assets/social-preview.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
   </head>
   
   
@@ -83,13 +118,29 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#pakethub" class="md-skip">
-          Zum Inhalt
-        </a>
-      
     </div>
     <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Nicht mehr anzeigen">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+  <a class="ph7-announce" href="https://github.com/eifeldj/pakethub/releases">
+    <span class="ph7-status-dot"></span>
+    <strong id="ph7-release-label">Latest PaketHub release</strong>
+    <span>Release notes &rarr;</span>
+  </a>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
       
     </div>
     
@@ -422,26 +473,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Startseite
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -459,69 +490,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fur-hilfreiche-paketverfolgung-gebaut" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Für hilfreiche Paketverfolgung gebaut
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-arbeitet-pakethub" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        So arbeitet PaketHub
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unterstutzte-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unterstützte Provider
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pakethub-auf-einen-blick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PaketHub auf einen Blick
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1206,60 +1174,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Inhaltsverzeichnis
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fur-hilfreiche-paketverfolgung-gebaut" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Für hilfreiche Paketverfolgung gebaut
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-arbeitet-pakethub" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        So arbeitet PaketHub
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unterstutzte-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unterstützte Provider
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pakethub-auf-einen-blick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PaketHub auf einen Blick
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1286,64 +1200,192 @@
   
 
 
-<div class="hero">
-<h1 id="pakethub">PaketHub<a class="headerlink" href="#pakethub" title="Permanent link">&para;</a></h1>
-<p>Paketverfolgung, die sich in Home Assistant zuhause fühlt.</p>
-<p>PaketHub verbindet die offizielle 17TRACK-API, native Carrier-Provider, automatischen Fallback, Diagnose und eine eigens entwickelte Dashboard-Karte.</p>
-<p><a class="md-button md-button--primary" href="quickstart/">Schnellstart</a>
-<a class="md-button" href="installation/">Installation</a>
-<a class="md-button" href="https://github.com/eifeldj/pakethub">Auf GitHub öffnen</a></p>
+<div class="ph7-home">
+
+<section class="ph7-hero">
+  <div class="ph7-copy">
+    <div class="ph7-eyebrow">◆ Für Home Assistant entwickelt</div>
+    <h1>Smartes Paket-Tracking.<br><span class="ph7-gradient">Direkt in Home Assistant.</span></h1>
+    <p class="ph7-tagline">Native Provider zuerst. 17TRACK, wenn nötig.</p>
+    <p class="ph7-lead">PaketHub wählt automatisch den besten Trackingweg, normalisiert Carrier-Daten und macht deine Sendungen in Home Assistant sichtbar, automatisierbar und verständlich.</p>
+
+    <div class="ph7-actions">
+      <a class="ph7-btn primary" href="installation/">⬇ PaketHub installieren</a>
+      <a class="ph7-btn" href="quickstart/">▶ Dokumentation entdecken</a>
+      <a class="ph7-btn" href="https://github.com/eifeldj/pakethub">◆ GitHub</a>
+    </div>
+
+    <div class="ph7-trust">
+      <span>✓ Native Provider zuerst</span>
+      <span>✓ Automatischer Fallback</span>
+      <span>✓ Open Source</span>
+    </div>
+  </div>
+
+  <div class="ph7-dashboard-wrap">
+    <div class="ph7-float-card one">● Carrier automatisch erkannt</div>
+    <div class="ph7-float-card two">✓ Zustellung aktualisiert</div>
+
+    <div class="ph7-dashboard" data-ph7-demo>
+      <div class="ph7-dash-head">
+        <div class="ph7-brand"><span class="ph7-brand-mark">▣</span><span>PaketHub</span></div>
+        <span class="ph7-live">LIVE</span>
+      </div>
+
+      <div class="ph7-tabs">
+        <button class="ph7-tab is-active" data-ph7-filter="all">Alle</button>
+        <button class="ph7-tab" data-ph7-filter="active">Aktiv</button>
+        <button class="ph7-tab" data-ph7-filter="delivered">Zugestellt</button>
+      </div>
+
+      <div class="ph7-list">
+        <div class="ph7-package" data-ph7-state="active">
+          <div class="ph7-package-icon">↗</div>
+          <div>
+            <strong>Kaffeebestellung</strong>
+            <small data-ph7-live-status>UPS · Unterwegs · Wien</small>
+            <div class="ph7-progress"><span data-ph7-live-progress style="width:72%"></span></div>
+          </div>
+          <div class="ph7-meta" data-ph7-live-eta>Morgen</div>
+        </div>
+
+        <div class="ph7-package" data-ph7-state="active">
+          <div class="ph7-package-icon">⌁</div>
+          <div><strong>Home-Assistant-Hardware</strong><small>17TRACK · Zoll abgeschlossen</small><div class="ph7-progress"><span style="width:49%"></span></div></div>
+          <div class="ph7-meta">ETA</div>
+        </div>
+
+        <div class="ph7-package" data-ph7-state="delivered">
+          <div class="ph7-package-icon">✓</div>
+          <div><strong>Druckerzubehör</strong><small>Zugestellt</small><div class="ph7-progress"><span style="width:100%"></span></div></div>
+          <div class="ph7-meta">Zugestellt</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-stats">
+    <div class="ph7-stat"><strong>2</strong><span>Tracking-Provider</span></div>
+    <div class="ph7-stat"><strong id="ph7-stars">—</strong><span>GitHub Stars</span></div>
+    <div class="ph7-stat"><strong id="ph7-forks">—</strong><span>Forks</span></div>
+    <div class="ph7-stat"><strong id="ph7-issues">—</strong><span>Open Issues</span></div>
+    <div class="ph7-stat"><strong id="ph7-version">Latest</strong><span>Version</span></div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-kicker">Warum PaketHub?</div>
+  <h2 class="ph7-title">Jede Sendung. Ein einheitliches Erlebnis.</h2>
+
+  <div class="ph7-feature-grid">
+    <article class="ph7-card"><div class="ph7-card-icon">◎</div><h3>Intelligente Provider-Auswahl</h3><p>PaketHub entscheidet automatisch zwischen nativem Tracking und 17TRACK-Fallback.</p></article>
+    <article class="ph7-card"><div class="ph7-card-icon">▦</div><h3>Dashboard statt Datenchaos</h3><p>Aktive, verspätete und zugestellte Sendungen bleiben auf jedem Gerät verständlich.</p></article>
+    <article class="ph7-card"><div class="ph7-card-icon">⌁</div><h3>Transparente Diagnose</h3><p>Provider-Nutzung, Fallbacks und Statuswechsel bleiben nachvollziehbar.</p></article>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-story">
+    <div>
+      <div class="ph7-kicker">Vom Trackingcode zur Entität</div>
+      <h2 class="ph7-title">PaketHub erzählt den ganzen Weg.</h2>
+      <p>Statt einzelner Carrier-Antworten bekommst du einen klaren, normalisierten Datenfluss für Dashboard, Automationen und Diagnose.</p>
+    </div>
+
+    <div class="ph7-story-visual">
+      <div class="ph7-story-line"></div>
+      <div class="ph7-story-node"><strong>1. Sendung registrieren</strong><br><small>17TRACK registry</small></div>
+      <div class="ph7-story-node"><strong>2. Carrier erkennen</strong><br><small>Provider manager</small></div>
+      <div class="ph7-story-node"><strong>3. Nativ oder Fallback</strong><br><small>UPS / 17TRACK</small></div>
+      <div class="ph7-story-node"><strong>4. Status normalisieren</strong><br><small>Home Assistant entities</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-split">
+    <div>
+      <div class="ph7-kicker">HACS</div>
+      <h2 class="ph7-title">In wenigen Minuten installiert</h2>
+      <p>Repository hinzufügen, PaketHub herunterladen, Home Assistant neu starten und die Integration einrichten.</p>
+    </div>
+
+    <div class="ph7-panel">
+      <div class="ph7-code">https://github.com/eifeldj/pakethub<button class="ph7-copy-button" data-ph7-copy="https://github.com/eifeldj/pakethub" data-success="Kopiert">Kopieren</button></div>
+      <p><a href="installation/">Installationsanleitung öffnen &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-split">
+    <div class="ph7-panel">
+      <div class="ph7-kicker">Provider intelligence</div>
+      <h2>Nativ, wenn möglich. Fallback, wenn nötig.</h2>
+      <div class="ph7-provider-controls">
+        <button class="ph7-provider-button is-active" data-ph7-provider="ups">UPS</button>
+        <button class="ph7-provider-button" data-ph7-provider="unknown">Unknown</button>
+        <button class="ph7-provider-button" data-ph7-provider="failure">Failure</button>
+      </div>
+      <div class="ph7-provider-result"><span data-ph7-provider-result>UPS native provider selected</span><span class="ph7-badge" data-ph7-provider-badge data-state="native">Native</span></div>
+    </div>
+
+    <div class="ph7-panel">
+      <div class="ph7-kicker">Interactive tracking</div>
+      <h2>Erlebe den Paketfluss.</h2>
+      <div class="ph7-timeline">
+        <div class="ph7-timeline-step"><div><strong>Registriert</strong><br><small>17TRACK registry</small></div></div>
+        <div class="ph7-timeline-step"><div><strong>Carrier erkannt</strong><br><small>Provider detection</small></div></div>
+        <div class="ph7-timeline-step"><div><strong>Unterwegs</strong><br><small>Normalized state</small></div></div>
+        <div class="ph7-timeline-step"><div><strong>Zugestellt</strong><br><small>Entity update</small></div></div>
+      </div>
+      <button class="ph7-run" data-ph7-run>Demo starten</button>
+    </div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-kicker">Ecosystem</div>
+  <h2 class="ph7-title">Provider heute und morgen</h2>
+  <div class="ph7-provider-grid">
+    <div class="ph7-provider-card"><strong>17TRACK</strong><br><span>Registrierung und Fallback</span><br><span class="ph7-state ready">Available</span></div>
+    <div class="ph7-provider-card"><strong>UPS</strong><br><span>Nativer Provider</span><br><span class="ph7-state ready">Available</span></div>
+    <div class="ph7-provider-card"><strong>DHL</strong><br><span>Zukünftiger Provider</span><br><span class="ph7-state planned">Planned</span></div>
+    <div class="ph7-provider-card"><strong>Weitere Carrier</strong><br><span>Provider framework</span><br><span class="ph7-state planned">Roadmap</span></div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-reveal">
+  <div class="ph7-kicker">Architecture</div>
+  <h2 class="ph7-title">Ein klarer Datenfluss</h2>
+  <div class="ph7-architecture">
+    <div class="ph7-node">Home Assistant</div>
+    <div class="ph7-node">Coordinator</div>
+    <div class="ph7-node">Detection</div>
+    <div class="ph7-node">Native / Fallback</div>
+    <div class="ph7-node">Entities</div>
+  </div>
+</section>
+
+<section class="ph7-section ph7-cta ph7-reveal">
+  <h2>Hol deine Pakete nach Hause.</h2>
+  <p>Installiere PaketHub und mache Paketverfolgung zu einem natürlichen Teil deines Home-Assistant-Dashboards.</p>
+  <a class="ph7-btn primary" href="installation/">PaketHub installieren</a>
+</section>
+
+<footer class="ph7-footer">
+  <div class="ph7-footer-grid">
+    <div><h3>PaketHub</h3><p>Intelligente Paketverfolgung für Home Assistant.</p></div>
+    <div><h4>Docs</h4><a href="installation/">Installation</a><a href="configuration/">Configuration</a><a href="dashboard-card/">Dashboard</a></div>
+    <div><h4>Project</h4><a href="roadmap/">Roadmap</a><a href="releases/">Releases</a><a href="development/">Development</a></div>
+    <div><h4>Community</h4><a href="https://github.com/eifeldj/pakethub">GitHub</a><a href="https://github.com/eifeldj/pakethub/issues">Issues</a><a href="https://github.com/eifeldj/pakethub/security">Security</a></div>
+  </div>
+  <div class="ph7-footer-bottom"><span>© Volker Moeltgen</span><span>Open Source · Home Assistant</span></div>
+</footer>
+
 </div>
-<div class="metric-strip">
-<div><strong>2</strong>Tracking-Provider</div>
-<div><strong>2</strong>Sprachen</div>
-<div><strong>1</strong>zentrales Dashboard</div>
-</div>
-<h2 id="fur-hilfreiche-paketverfolgung-gebaut">Für hilfreiche Paketverfolgung gebaut<a class="headerlink" href="#fur-hilfreiche-paketverfolgung-gebaut" title="Permanent link">&para;</a></h2>
-<div class="grid cards">
-<ul>
-<li>
-<p>:material-package-variant-closed:{ .lg .middle } <strong>Alle Sendungen an einem Ort</strong></p>
-<p>Status, ETA, Standort, Fortschritt und Verlauf stehen direkt in Home Assistant bereit.</p>
-<p><a href="features/">Funktionen entdecken</a></p>
-</li>
-<li>
-<p>:material-truck-fast:{ .lg .middle } <strong>Intelligente Provider-Auswahl</strong></p>
-<p>PaketHub erkennt den Carrier, nutzt zuerst den nativen Provider und wechselt bei Bedarf automatisch zum Fallback.</p>
-<p><a href="providers/">Provider-Architektur</a></p>
-</li>
-<li>
-<p>:material-view-dashboard-variant:{ .lg .middle } <strong>Eigene Dashboard-Karte</strong></p>
-<p>Responsive Darstellung mit Paketübersicht, Carrier-Branding und chronologischen Details.</p>
-<p><a href="dashboard-card/">Dashboard-Karte konfigurieren</a></p>
-</li>
-<li>
-<p>:material-chart-timeline-variant-shimmer:{ .lg .middle } <strong>Transparente Diagnose</strong></p>
-<p>Provider-Nutzung, Fallbacks, API-Laufzeiten, Update-Dauer und Versionsabgleich.</p>
-<p><a href="diagnostics/">Diagnose-Anleitung</a></p>
-</li>
-</ul>
-</div>
-<h2 id="so-arbeitet-pakethub">So arbeitet PaketHub<a class="headerlink" href="#so-arbeitet-pakethub" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[Home Assistant] --&gt; B[PaketHub-Koordinator]
-    B --&gt; C[Provider-Erkennung]
-    C --&gt; D[Natives UPS]
-    C --&gt; E[17TRACK-Fallback]
-    E --&gt; F[Sendungsregister]
-    D --&gt; G[Normalisierte Trackingdaten]
-    E --&gt; G
-    G --&gt; H[Entitäten und Dashboard-Karte]</code></pre>
-<h2 id="unterstutzte-provider">Unterstützte Provider<a class="headerlink" href="#unterstutzte-provider" title="Permanent link">&para;</a></h2>
-<p><span class="provider-badge">:material-radar: 17TRACK · Register &amp; Fallback</span>
-<span class="provider-badge">:material-truck: UPS · natives Tracking</span></p>
-<div class="admonition tip">
-<p class="admonition-title">Auf Wachstum ausgelegt</p>
-<p>Das Provider-Framework ist bewusst erweiterbar, damit weitere Carrier integriert werden können, ohne die Bedienung zu verändern.</p>
-</div>
-<h2 id="pakethub-auf-einen-blick">PaketHub auf einen Blick<a class="headerlink" href="#pakethub-auf-einen-blick" title="Permanent link">&para;</a></h2>
-<p>Das eigens entwickelte Dashboard stellt aktive und zugestellte Sendungen übersichtlich dar.</p>
-<p><a href="screenshots/"><img alt="PaketHub dashboard preview" src="../assets/dashboard-preview.svg" /></a></p>
 
 
 
@@ -1366,6 +1408,8 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1442,12 +1486,20 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "content.tabs.link", "content.tooltips", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
+        <script src="../javascripts/website4.js"></script>
+      
         <script src="../javascripts/site.js"></script>
+      
+        <script src="../javascripts/website5.js"></script>
+      
+        <script src="../javascripts/website6.js"></script>
+      
+        <script src="../javascripts/website7.js"></script>
       
     
   </body>

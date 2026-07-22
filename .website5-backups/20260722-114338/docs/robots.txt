@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eifeldj.github.io/pakethub/sitemap.xml

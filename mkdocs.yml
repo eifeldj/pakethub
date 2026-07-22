@@ -8,12 +8,16 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   logo: assets/pakethub-logo.svg
   favicon: assets/pakethub-logo.svg
   icon:
     repo: fontawesome/brands/github
   features:
+    - navigation.tracking
+    - content.tabs.link
+    - content.tooltips
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
@@ -85,6 +89,9 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -102,11 +109,19 @@ markdown_extensions:
       custom_checkbox: true
 
 extra_css:
+  - stylesheets/website4.css
   - stylesheets/extra.css
 
+  - stylesheets/website5.css
+  - stylesheets/website6.css
+  - stylesheets/website7.css
 extra_javascript:
+  - javascripts/website4.js
   - javascripts/site.js
 
+  - javascripts/website5.js
+  - javascripts/website6.js
+  - javascripts/website7.js
 extra:
   status:
     new: New

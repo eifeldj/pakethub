@@ -1,0 +1,155 @@
+site_name: PaketHub
+site_description: Native parcel tracking for Home Assistant
+site_author: Volker Moeltgen
+site_url: https://eifeldj.github.io/pakethub/
+repo_url: https://github.com/eifeldj/pakethub
+repo_name: eifeldj/pakethub
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  logo: assets/pakethub-logo.svg
+  favicon: assets/pakethub-logo.svg
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tracking
+    - content.tabs.link
+    - content.tooltips
+    - announce.dismiss
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: de
+          name: Deutsch
+          build: true
+          nav_translations:
+            Home: Startseite
+            Getting started: Erste Schritte
+            Installation: Installation
+            Quick start: Schnellstart
+            Configuration: Konfiguration
+            Features: Funktionen
+            Dashboard card: Dashboard-Karte
+            Providers: Anbieter
+            Diagnostics: Diagnose
+            Actions and automations: Aktionen und Automationen
+            Troubleshooting: Fehlerbehebung
+            Project: Projekt
+            Roadmap: Roadmap
+            Development: Entwicklung
+            Contributing: Mitwirken
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - stylesheets/website4.css
+  - stylesheets/extra.css
+
+  - stylesheets/website5.css
+  - stylesheets/website6.css
+extra_javascript:
+  - javascripts/website4.js
+  - javascripts/site.js
+
+  - javascripts/website5.js
+  - javascripts/website6.js
+extra:
+  status:
+    new: New
+    planned: Planned
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/eifeldj/pakethub
+      name: PaketHub on GitHub
+  generator: false
+
+copyright: Copyright &copy; Volker Moeltgen
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: installation.md
+      - Quick start: quickstart.md
+      - Configuration: configuration.md
+  - Features:
+      - Overview: features.md
+      - Screenshots: screenshots.md
+      - Dashboard card: dashboard-card.md
+      - Providers: providers.md
+      - Diagnostics: diagnostics.md
+      - Actions and automations: actions-and-automations.md
+      - Reference: reference.md
+  - Project:
+      - Architecture: architecture.md
+      - Roadmap: roadmap.md
+      - Releases: releases.md
+      - Development: development.md
+      - Contributing: contributing.md
+  - Troubleshooting: troubleshooting.md
