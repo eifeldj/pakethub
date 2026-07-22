@@ -1,74 +1,81 @@
-# PaketHub
 
+<div align="center">
+<img src=".github/assets/repository-banner.svg" alt="PaketHub" width="100%">
 
-
+[![Release](https://img.shields.io/github/v/release/eifeldj/pakethub?sort=semver)](https://github.com/eifeldj/pakethub/releases)
 [![Documentation](https://img.shields.io/github/actions/workflow/status/eifeldj/pakethub/docs.yml?branch=main&label=documentation)](https://eifeldj.github.io/pakethub/)
-[![GitHub release](https://img.shields.io/github/v/release/eifeldj/pakethub)](https://github.com/eifeldj/pakethub/releases)
+[![HACS](https://img.shields.io/badge/HACS-Custom-41BDF5?logo=homeassistant&logoColor=white)](https://hacs.xyz/)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Custom%20Integration-41BDF5?logo=homeassistant&logoColor=white)](https://www.home-assistant.io/)
 [![License](https://img.shields.io/github/license/eifeldj/pakethub)](LICENSE)
-[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-integration-41BDF5?logo=homeassistant&logoColor=white)](https://www.home-assistant.io/)
+[![Issues](https://img.shields.io/github/issues/eifeldj/pakethub)](https://github.com/eifeldj/pakethub/issues)
 
-> **Created and maintained by Volker Moeltgen**
+**One place for every shipment — with native providers, automatic fallback and a dedicated Home Assistant dashboard card.**
 
-> **Version 2.5.1 – Foundation Maintenance Release:** Synchronizes all active package, integration and dashboard-card versions, updates the documentation for the provider architecture and prepares a clean HACS release.
+[Website & documentation](https://eifeldj.github.io/pakethub/) · [Installation](#installation) · [Support](#support)
 
-## ✨ Highlights
+English · [Deutsch](README.de.md)
+</div>
 
-- Dedicated carrier branding panel with recognizable carrier colors
-- Spacious responsive package cards with improved right-side padding
-- ETA, location, progress and latest event at a glance
-- Accessible package-detail dialog with keyboard and focus management
+---
 
-![PaketHub – Parcel Tracking for Home Assistant](images/hacs-banner.png)
+## Overview
 
-PaketHub is a custom Home Assistant integration for parcel tracking through the official 17TRACK API v2.4.
+PaketHub is a custom Home Assistant integration for parcel tracking through the official **17TRACK API v2.4**. It adds native carrier support where available, falls back automatically when required and presents normalized shipment data as devices, entities and a purpose-built dashboard card.
 
-> **Project status:** Stable release. One 17TRACK account per Home Assistant instance is currently supported.
+**Current integration version / Aktuelle Integrationsversion:** `2.5.1`
 
 ## Features
 
-- UI configuration and configurable polling interval
+- UI setup and configurable polling interval
 - One Home Assistant device per shipment
+- Central PaketHub device with counters, synchronization state, API connectivity and refresh button
 - Status, location, latest event, last update, ETA, transit days and carrier sensors
-- Full tracking history in the status sensor attributes
-- Native package detail view with a chronological tracking timeline
-- Copyable tracking number and direct 17TRACK link
-- Central PaketHub device with package counters, last synchronization, API connectivity and refresh button
-- Dynamic icons for shipment states
-- Home Assistant actions for adding, removing and refreshing shipments
-- Native UPS tracking with automatic fallback to 17TRACK
-- Extensible provider architecture for future native carriers
-- Provider selection, fallback and API performance diagnostics
-- Privacy-conscious diagnostics
-- Synchronized integration and dashboard-card versioning
+- Full tracking history and accessible package-detail timeline
+- Native UPS tracking with automatic 17TRACK fallback
+- Extensible provider architecture and diagnostics
+- Native Lovelace card with automatic shipment discovery
 - German and English translations
 
-## Documentation
+## Architecture
 
-The bilingual PaketHub documentation is published at:
+```text
+Tracking number / Trackingnummer
+        ↓
+Carrier detection / Carrier-Erkennung
+        ↓
+Native provider ── unavailable/error ──→ 17TRACK fallback
+        ↓
+Normalized shipment model
+        ↓
+Home Assistant devices, entities and PaketHub dashboard card
+```
 
-**https://eifeldj.github.io/pakethub/**
+## Installation
 
-## Project resources
+### HACS
 
-- [Documentation](https://eifeldj.github.io/pakethub/)
-- [Releases](https://github.com/eifeldj/pakethub/releases)
-- [Roadmap](https://eifeldj.github.io/pakethub/roadmap/)
-- [Contributing](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
+1. Open **HACS** and choose **Custom repositories**.
+2. Add `https://github.com/eifeldj/pakethub` as an **Integration**.
+3. Install **PaketHub** and restart Home Assistant.
+4. Open **Settings → Devices & services → Add integration**.
+5. Select PaketHub and enter your official 17TRACK API v2.4 key.
 
-## Installation with HACS
-
-1. Open **HACS** in Home Assistant.
-2. Open the three-dot menu and select **Custom repositories**.
-3. Add `https://github.com/eifeldj/pakethub` as an **Integration**.
-4. Search for **PaketHub** and install it.
-5. Restart Home Assistant.
-6. Open **Settings → Devices & services → Add integration** and select **PaketHub**.
-7. Enter your official 17TRACK API v2.4 key.
-
-## Manual installation
+### Manual installation / Manuelle Installation
 
 Copy `custom_components/pakethub` to `/config/custom_components/pakethub`, restart Home Assistant and add PaketHub through the integrations UI.
+
+## Dashboard card
+
+```yaml
+type: custom:pakethub-card
+title: My packages
+show_delivered: false
+max_packages: 8
+sort_by: status
+tap_action: details
+```
+
+See [`dashboard/README.md`](dashboard/README.md) for YAML-mode dashboards.
 
 ## Actions
 
@@ -89,43 +96,23 @@ data:
 action: pakethub.refresh
 ```
 
-## Support and privacy
+## Documentation
 
-Report bugs through the GitHub issue tracker. Never include API keys, tracking numbers, addresses or private shipment details in public issues.
+**[https://eifeldj.github.io/pakethub/](https://eifeldj.github.io/pakethub/)**
 
-## License
+## Contributing and support
 
-MIT License.
+Read [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`SUPPORT.md`](SUPPORT.md).
 
-## Native dashboard card
+Never publish API keys, full tracking numbers, addresses or private shipment details.
 
-PaketHub includes a native Lovelace card that automatically discovers all PaketHub shipments. It can be added directly through Home Assistant's visual card editor.
+- [Bug report](https://github.com/eifeldj/pakethub/issues/new?template=bug_report.yml)
+- [Feature request](https://github.com/eifeldj/pakethub/issues/new?template=feature_request.yml)
+- [Native provider request](https://github.com/eifeldj/pakethub/issues/new?template=provider_request.yml)
+- [Security policy](SECURITY.md)
 
-```yaml
-type: custom:pakethub-card
-title: My packages
-show_delivered: false
-max_packages: 8
-sort_by: status
-tap_action: details
-```
+## Project links
 
-The JavaScript resource is registered automatically for storage-mode dashboards. See `dashboard/README.md` for YAML-mode instructions.
+[Documentation](https://eifeldj.github.io/pakethub/) · [Releases](https://github.com/eifeldj/pakethub/releases) · [Roadmap](https://eifeldj.github.io/pakethub/roadmap/) · [Changelog](CHANGELOG.md) · [License](LICENSE)
 
-### Tap actions
-
-`tap_action` supports:
-
-- `details` — open the PaketHub detail dialog and tracking timeline
-- `url` — open the shipment on 17TRACK
-- `more-info` — open the Home Assistant entity dialog
-
-### Dashboard highlights
-
-- Carrier-specific badges
-- Prominent ETA block
-- Inline tracking-number copy action
-- Status colors, progress bars, location and latest event
-- Responsive package detail dialog with chronological timeline
-
-A German version of the documentation is available in [README.de.md](README.de.md).
+<div align="center"><sub>Created and maintained by Volker Moeltgen · <a href="https://github.com/eifeldj">@eifeldj</a></sub></div>

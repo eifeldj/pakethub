@@ -1,0 +1,18 @@
+{
+  "copied": [
+    "README.md",
+    "README.de.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".github/ISSUE_TEMPLATE/provider_request.yml"
+  ],
+  "missing": [
+    "SUPPORT.md",
+    ".github/CODEOWNERS",
+    ".github/assets/repository-banner.svg",
+    ".github/assets/social-preview.svg",
+    ".github/assets/social-preview.png"
+  ]
+}

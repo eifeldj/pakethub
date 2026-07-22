@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: PaketHub documentation
+    url: https://eifeldj.github.io/pakethub/
+    about: Read installation, configuration and troubleshooting guidance.
+  - name: Security vulnerability
+    url: https://github.com/eifeldj/pakethub/security
+    about: Report security issues privately instead of opening a public issue.

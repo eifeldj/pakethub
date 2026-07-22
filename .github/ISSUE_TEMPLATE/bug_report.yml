@@ -1,67 +1,32 @@
 name: Bug report
-description: Report a reproducible PaketHub problem
+description: Report a reproducible PaketHub defect
 title: "[Bug]: "
-labels:
-  - bug
+labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
-      value: |
-        Thank you for helping improve PaketHub. Remove API keys, full tracking numbers, names and addresses before submitting.
+      value: Remove API keys, full tracking numbers, addresses and private shipment details.
   - type: input
-    id: version
     attributes:
       label: PaketHub version
-      placeholder: "2.5.1"
     validations:
       required: true
   - type: input
-    id: ha_version
     attributes:
       label: Home Assistant version
     validations:
       required: true
-  - type: dropdown
-    id: provider
+  - type: textarea
     attributes:
-      label: Provider
-      options:
-        - 17TRACK
-        - UPS native provider
-        - Automatic detection / fallback
-        - Dashboard card
-        - Unknown
+      label: Problem and expected behavior
     validations:
       required: true
   - type: textarea
-    id: problem
     attributes:
-      label: Problem
-      description: What happened and what did you expect?
+      label: Steps to reproduce
     validations:
       required: true
   - type: textarea
-    id: reproduce
     attributes:
-      label: Reproduction steps
-      placeholder: |
-        1. ...
-        2. ...
-        3. ...
-    validations:
-      required: true
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant logs
+      label: Redacted logs
       render: text
-      description: Remove all credentials and personal shipment data.
-  - type: checkboxes
-    id: checks
-    attributes:
-      label: Checklist
-      options:
-        - label: I searched existing issues.
-          required: true
-        - label: I removed API keys, full tracking numbers, names and addresses.
-          required: true

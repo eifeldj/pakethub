@@ -1,36 +1,18 @@
 name: Feature request
-description: Suggest an improvement for PaketHub
+description: Suggest an improvement
 title: "[Feature]: "
-labels:
-  - enhancement
+labels: ["enhancement", "triage"]
 body:
   - type: textarea
-    id: need
     attributes:
-      label: User need
-      description: What problem would this solve?
+      label: Problem or use case
     validations:
       required: true
   - type: textarea
-    id: proposal
     attributes:
       label: Proposed solution
     validations:
       required: true
-  - type: dropdown
-    id: area
-    attributes:
-      label: Area
-      options:
-        - Provider
-        - Dashboard card
-        - Automation or action
-        - Diagnostics
-        - Documentation
-        - Other
-    validations:
-      required: true
   - type: textarea
-    id: alternatives
     attributes:
-      label: Alternatives considered
+      label: Alternatives and context
